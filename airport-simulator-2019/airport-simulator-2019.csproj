@@ -58,6 +58,8 @@
     <Compile Include="AddToScheduleDialog.xaml.cs">
       <DependentUpon>AddToScheduleDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Airplane.cs" />
+    <Compile Include="ListAirplane.cs" />
     <Compile Include="RentAirplaneDialog.xaml.cs">
       <DependentUpon>RentAirplaneDialog.xaml</DependentUpon>
     </Compile>
