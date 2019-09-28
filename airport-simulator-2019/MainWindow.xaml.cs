@@ -88,5 +88,15 @@ namespace airport_simulator_2019
                 MessageBox.Show("Успех");
             }
         }
+
+        private void RemoveFromSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            switch (MessageBox.Show("Вы уверены, что хотите удалить этот рейс из расписания?", "Подтверждение удаления рейса", MessageBoxButton.YesNo))
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Успех");
+                    break;
+            }
+        }
     }
 }

@@ -60,7 +60,7 @@
                     </DataGrid>
 
                     <WrapPanel Grid.Row="1" HorizontalAlignment="Right">
-
+                        <Button Name="RemoveFromSchedule" Content="Убрать из Расписания" Click="RemoveFromSchedule_Click" />
                     </WrapPanel>
                 </Grid>
             </TabItem>
