@@ -61,6 +61,9 @@
     <Compile Include="RentAirplaneDialog.xaml.cs">
       <DependentUpon>RentAirplaneDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TransferAirplaneDialog.xaml.cs">
+      <DependentUpon>TransferAirplaneDialog.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddToScheduleDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +82,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RentAirplaneDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransferAirplaneDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -108,5 +108,14 @@ namespace airport_simulator_2019
                     break;
             }
         }
+
+        private void TransferAirplane_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new TransferAirplaneDialog();
+            if ((bool)dialog.ShowDialog())
+            {
+                MessageBox.Show("Успех");
+            }
+        }
     }
 }

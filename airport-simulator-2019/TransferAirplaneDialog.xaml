@@ -1,0 +1,54 @@
+﻿<Window x:Class="airport_simulator_2019.TransferAirplaneDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:airport_simulator_2019"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Title="Перегнать Самолет">
+
+    <Window.Resources>
+        <Style TargetType="WrapPanel">
+            <Setter Property="Margin" Value="5 5 5 5"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5 5 5 5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0">
+            <TextBlock Text="Город назначения:" />
+            <ComboBox>
+
+            </ComboBox>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="1">
+            <TextBlock Text="Дата вылета:" />
+            <DatePicker />
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="2">
+            <TextBlock Text="Время вылета:" />
+            <TextBox Width="20"/>
+            <TextBlock Text=":" />
+            <TextBox Width="20"/>
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Right">
+            <Button Name="Transfer" IsDefault="True" Content="Перегнать" Click="Transfer_Click" />
+            <Button IsCancel="True" Content="Отмена" />
+        </WrapPanel>
+
+    </Grid>
+</Window>
