@@ -98,5 +98,15 @@ namespace airport_simulator_2019
                     break;
             }
         }
+
+        private void RefuseFlight_Click(object sender, RoutedEventArgs e)
+        {
+            switch (MessageBox.Show("Вы уверены, что хотите отказаться от этого рейса?", "Подтверждение отказа от рейса", MessageBoxButton.YesNo))
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Успех");
+                    break;
+            }
+        }
     }
 }
