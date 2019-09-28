@@ -8,21 +8,21 @@ namespace airport_simulator_2019
 {
    public class Airplane
     {
-        public string name;  // название самолета
-        public int distance_fly; // макс расстояние полета
-        public int max_load; // макс вес
-        public int speed;  // скорость
-        public int quantity_seat; // кол-во мест
-        public int fuel; // расход топлива
-        public int price_buy; // цена покупки
-        public int price_sale;  // цена продажи
-        public int rent_day; // цена аренды за 1 день
-        public int term_date; // срок владения (аренды) в днях
-        public string location;  //местоположение
-        public Boolean in_fly; // находится ли самолет в полете
+        public string Name { get; set; }  // название самолета
+        public int Distance_fly { get; set; } // макс расстояние полета
+        public int Max_load { get; set; } // макс вес
+        public int Speed { get; set; } // скорость
+        public int Quantity_seat { get; set; } // кол-во мест
+        public int Fuel { get; set; } // расход топлива
+        public int Price_buy { get; set; } // цена покупки
+        public int Price_sale { get; set; }  // цена продажи
+        public int Rent_day { get; set; } // цена аренды за 1 день
+        public int Term_date { get; set; } // срок владения (аренды) в днях
+        public string Location { get; set; }  //местоположение
+        public Boolean In_fly { get; set; } // находится ли самолет в полете
 
 
-       
+
 
     }
 }

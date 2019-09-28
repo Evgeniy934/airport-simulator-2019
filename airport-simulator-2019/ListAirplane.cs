@@ -7,180 +7,180 @@ using System.Threading.Tasks;
 namespace airport_simulator_2019
 {
 
-    class ListAirplane
+    public class ListAirplane
     {
-        static List<Airplane> ListOfAirplane;
+        public static List<Airplane> ListOfAirplane;
 
-        static void Create_List()
+        public static void Create_List()
         {
 
             ListOfAirplane = new List<Airplane>();
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "ТУ-134",
-                quantity_seat = 96,
-                speed = 850,
-                distance_fly = 2800,
-                max_load = 8300,
-                fuel = 8300,
-                in_fly = false,
-                location = "",
-                rent_day = 400000,
-                price_buy = 5000000,
-                price_sale = 2500000,
-                term_date = -1
+                Name = "ТУ-134",
+                Quantity_seat = 96,
+                Speed = 850,
+                Distance_fly = 2800,
+                Max_load = 8300,
+                Fuel = 8300,
+                In_fly = false,
+                Location = "",
+                Rent_day = 400000,
+                Price_buy = 5000000,
+                Price_sale = 2500000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "ТУ-204",
-                quantity_seat = 214,
-                speed = 850,
-                max_load = 21000,
-                distance_fly = 4500,
-                fuel = 3500,
-                in_fly = false,
-                location = "",
-                rent_day = 550000,
-                price_buy = 6000000,
-                price_sale = 3000000,
-                term_date = -1
+                Name = "ТУ-204",
+                Quantity_seat = 214,
+                Speed = 850,
+                Max_load = 21000,
+                Distance_fly = 4500,
+                Fuel = 3500,
+                In_fly = false,
+                Location = "",
+                Rent_day = 550000,
+                Price_buy = 6000000,
+                Price_sale = 3000000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "SSJ-100",
-                quantity_seat = 95,
-                speed = 950,
-                distance_fly = 3000,
-                max_load = 12200,
-                fuel = 2300,
-                in_fly = false,
-                location = "",
-                rent_day = 620000,
-                price_buy = 8000000,
-                price_sale = 4000000,
-                term_date = -1
+                Name = "SSJ-100",
+                Quantity_seat = 95,
+                Speed = 950,
+                Distance_fly = 3000,
+                Max_load = 12200,
+                Fuel = 2300,
+                In_fly = false,
+                Location = "",
+                Rent_day = 620000,
+                Price_buy = 8000000,
+                Price_sale = 4000000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "ИЛ-62",
-                quantity_seat = 144,
-                speed = 850,
-                distance_fly = 6700,
-                max_load = 25000,
-                fuel = 7300,
-                in_fly = false,
-                location = "",
-                rent_day = 800000,
-                price_buy = 8000000,
-                price_sale = 4000000,
-                term_date = -1
+                Name = "ИЛ-62",
+                Quantity_seat = 144,
+                Speed = 850,
+                Distance_fly = 6700,
+                Max_load = 25000,
+                Fuel = 7300,
+                In_fly = false,
+                Location = "",
+                Rent_day = 800000,
+                Price_buy = 8000000,
+                Price_sale = 4000000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "ИЛ-86",
-                quantity_seat = 330,
-                speed = 950,
-                distance_fly = 4350,
-                max_load = 42000,
-                fuel = 9900,
-                in_fly = false,
-                location = "",
-                rent_day = 9500000,
-                price_buy = 10000000,
-                price_sale = 5000000,
-                term_date = -1
+                Name = "ИЛ-86",
+                Quantity_seat = 330,
+                Speed = 950,
+                Distance_fly = 4350,
+                Max_load = 42000,
+                Fuel = 9900,
+                In_fly = false,
+                Location = "",
+                Rent_day = 9500000,
+                Price_buy = 10000000,
+                Price_sale = 5000000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "Boeing 737-800",
-                quantity_seat = 189,
-                speed = 850,
-                distance_fly = 5400,
-                max_load = 20500,
-                fuel = 2500,
-                in_fly = false,
-                location = "",
-                rent_day = 710000,
-                price_buy = 3000000,
-                price_sale = 1500000,
-                term_date = -1
+                Name = "Boeing 737-800",
+                Quantity_seat = 189,
+                Speed = 850,
+                Distance_fly = 5400,
+                Max_load = 20500,
+                Fuel = 2500,
+                In_fly = false,
+                Location = "",
+                Rent_day = 710000,
+                Price_buy = 3000000,
+                Price_sale = 1500000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "Airbus A310",
-                quantity_seat = 218,
-                speed = 900,
-                distance_fly = 4000,
-                max_load = 33500,
-                fuel = 8300,
-                in_fly = false,
-                location = "",
-                rent_day = 660000,
-                price_buy = 5500000,
-                price_sale = 2750000,
-                term_date = -1
+                Name = "Airbus A310",
+                Quantity_seat = 218,
+                Speed = 900,
+                Distance_fly = 4000,
+                Max_load = 33500,
+                Fuel = 8300,
+                In_fly = false,
+                Location = "",
+                Rent_day = 660000,
+                Price_buy = 5500000,
+                Price_sale = 2750000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "Boeing 747-400",
-                quantity_seat = 524,
-                speed = 920,
-                distance_fly = 13000,
-                max_load = 70000,
-                fuel = 11300,
-                in_fly = false,
-                location = "",
-                rent_day = 1500000,
-                price_buy = 35000000,
-                price_sale = 175000000,
-                term_date = -1
+                Name = "Boeing 747-400",
+                Quantity_seat = 524,
+                Speed = 920,
+                Distance_fly = 13000,
+                Max_load = 70000,
+                Fuel = 11300,
+                In_fly = false,
+                Location = "",
+                Rent_day = 1500000,
+                Price_buy = 35000000,
+                Price_sale = 175000000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "Boeing 767-300",
-                quantity_seat = 269,
-                speed = 910,
-                distance_fly = 9700,
-                max_load = 40200,
-                fuel = 4500,
-                in_fly = false,
-                location = "",
-                rent_day = 1100000,
-                price_buy = 27000000,
-                price_sale = 13500000,
-                term_date = -1
+                Name = "Boeing 767-300",
+                Quantity_seat = 269,
+                Speed = 910,
+                Distance_fly = 9700,
+                Max_load = 40200,
+                Fuel = 4500,
+                In_fly = false,
+                Location = "",
+                Rent_day = 1100000,
+                Price_buy = 27000000,
+                Price_sale = 13500000,
+                Term_date = -1
             });
 
             ListOfAirplane.Add(new Airplane
             {
-                name = "Airbus A330-300",
-                quantity_seat = 335,
-                speed = 870,
-                distance_fly = 10400,
-                max_load = 51700,
-                fuel = 5900,
-                in_fly = false,
-                location = "",
-                rent_day = 12000000,
-                price_buy = 22000000,
-                price_sale = 11000000,
-                term_date = -1
+                Name = "Airbus A330-300",
+                Quantity_seat = 335,
+                Speed = 870,
+                Distance_fly = 10400,
+                Max_load = 51700,
+                Fuel = 5900,
+                In_fly = false,
+                Location = "",
+                Rent_day = 12000000,
+                Price_buy = 22000000,
+                Price_sale = 11000000,
+                Term_date = -1
             });
 
 
 
         }
         
-        static List<Airplane> GetList()
+        public static List<Airplane> GetList()
         {
             Create_List();
             return ListOfAirplane;       

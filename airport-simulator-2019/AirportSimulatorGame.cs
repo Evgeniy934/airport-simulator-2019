@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace airport_simulator_2019
         private DateTime _time;
         private int _offset;
         private int _balance;
+
+        public ObservableCollection<Airplane> AirplaneShop { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -51,6 +54,7 @@ namespace airport_simulator_2019
             _offset = 1;
             Time = DateTime.Now;
             Balance = 1000000;
+            AirplaneShop = new ObservableCollection<Airplane>(ListAirplane.GetList());
         }
 
         public void SetNormalSpeed()

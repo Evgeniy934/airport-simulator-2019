@@ -161,18 +161,18 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    
-                    <DataGrid Grid.Row="0">
+
+                    <DataGrid Grid.Row="0" ItemsSource="{Binding AirplaneShop}" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" />
-                            <DataGridTextColumn Header="Кол-во пассажирских мест" />
-                            <DataGridTextColumn Header="Допустимый вес груза" />
-                            <DataGridTextColumn Header="Допустимая дальность перелета" />
-                            <DataGridTextColumn Header="Скорость" />
-                            <DataGridTextColumn Header="Расход топлива" />
-                            <DataGridTextColumn Header="Цена покупки" />
-                            <DataGridTextColumn Header="Цена продажи" />
-                            <DataGridTextColumn Header="Цена аренды" />
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding Quantity_seat}" />
+                            <DataGridTextColumn Header="Допустимый вес груза" Binding="{Binding Max_load}" />
+                            <DataGridTextColumn Header="Допустимая дальность перелета" Binding="{Binding Distance_fly}" />
+                            <DataGridTextColumn Header="Скорость" Binding="{Binding Speed}" />
+                            <DataGridTextColumn Header="Расход топлива" Binding="{Binding Fuel}" />
+                            <DataGridTextColumn Header="Цена покупки" Binding="{Binding Price_buy}" />
+                            <DataGridTextColumn Header="Цена продажи" Binding="{Binding Price_sale}" />
+                            <DataGridTextColumn Header="Цена аренды" Binding="{Binding Rent_day}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
