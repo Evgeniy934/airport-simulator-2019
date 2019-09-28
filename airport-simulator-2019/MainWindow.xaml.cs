@@ -11,7 +11,7 @@ namespace airport_simulator_2019
         {
             InitializeComponent();
             DataContext = _game;
-            Task.Run(() =>_game.run());
+            Task.Run(() =>_game.Run());
         }
 
         private void RealTime_Click(object sender, RoutedEventArgs e)

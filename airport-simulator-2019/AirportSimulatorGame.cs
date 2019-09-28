@@ -68,7 +68,7 @@ namespace airport_simulator_2019
             _offset = 3600;
         }
 
-        public async void run()
+        public async void Run()
         {
             while (true)
             {
