@@ -89,7 +89,7 @@
                     </DataGrid>
 
                     <WrapPanel Grid.Row="1" HorizontalAlignment="Right">
-                        
+                        <Button Name="AddToSchedule" Content="Поставить в Расписание" Click="AddToSchedule_Click" />
                     </WrapPanel>
                 </Grid>
             </TabItem>

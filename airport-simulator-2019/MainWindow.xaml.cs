@@ -79,5 +79,14 @@ namespace airport_simulator_2019
                     break;
             }
         }
+
+        private void AddToSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new AddToScheduleDialog();
+            if ((bool)dialog.ShowDialog())
+            {
+                MessageBox.Show("Успех");
+            }
+        }
     }
 }

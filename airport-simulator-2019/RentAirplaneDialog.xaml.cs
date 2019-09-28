@@ -8,7 +8,6 @@ namespace airport_simulator_2019
         public RentAirplaneDialog()
         {
             InitializeComponent();
-            DataContext = this;
         }
 
         private void Rent_Click(object sender, RoutedEventArgs e)
