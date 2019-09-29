@@ -20,6 +20,8 @@ namespace airport_simulator_2019.GameObjects
         public Airplane Rent(Airplane airplane, DateTime dateEnd)
         {
             _airplanes.Find(x => x == airplane).RentEnd = dateEnd;
+            Airplane rent = _airplanes.Find(x => x == airplane);
+            rent.RentDays = (dateEnd - Game.Time).Days;
             return airplane;
         }
 
@@ -42,7 +44,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 400000,
                 PriceBuy = 5000000,
                 PriceSale = 2500000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -58,7 +60,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 550000,
                 PriceBuy = 6000000,
                 PriceSale = 3000000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -74,7 +76,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 620000,
                 PriceBuy = 8000000,
                 PriceSale = 4000000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -90,7 +92,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 800000,
                 PriceBuy = 8000000,
                 PriceSale = 4000000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -106,7 +108,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 9500000,
                 PriceBuy = 10000000,
                 PriceSale = 5000000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -122,7 +124,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 710000,
                 PriceBuy = 3000000,
                 PriceSale = 1500000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -138,7 +140,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 660000,
                 PriceBuy = 5500000,
                 PriceSale = 2750000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -154,7 +156,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 1500000,
                 PriceBuy = 35000000,
                 PriceSale = 175000000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -170,7 +172,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 1100000,
                 PriceBuy = 27000000,
                 PriceSale = 13500000,
-                RentDate = -1
+                RentDays = -1
             });
 
             _airplanes.Add(new Airplane
@@ -186,7 +188,7 @@ namespace airport_simulator_2019.GameObjects
                 PriceRent = 12000000,
                 PriceBuy = 22000000,
                 PriceSale = 11000000,
-                RentDate = -1
+                RentDays = -1
             });
         }
 

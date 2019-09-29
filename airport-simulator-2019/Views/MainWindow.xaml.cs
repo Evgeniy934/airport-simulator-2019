@@ -150,6 +150,12 @@ namespace airport_simulator_2019
                 ShopDataGrid.Items.Add(item);
             }
 
+            MyAirplanesGrid.Items.Clear();
+            foreach (var item in _game.Player.Airplanes)
+            {
+                MyAirplanesGrid.Items.Add(item);
+            }
+
             Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
 
         }

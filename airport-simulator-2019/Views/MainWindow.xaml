@@ -127,29 +127,33 @@
 
             <TabItem Header="Мои Самолеты">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="199*"/>
+                        <ColumnDefinition Width="194*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0">
+                    <DataGrid Name="MyAirplanesGrid" Grid.Row="0" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Название" />
-                            <DataGridTextColumn Header="Кол-во пассажирских мест" />
-                            <DataGridTextColumn Header="Допустимый вес груза" />
-                            <DataGridTextColumn Header="Допустимая дальность перелета" />
-                            <DataGridTextColumn Header="Скорость" />
-                            <DataGridTextColumn Header="Расход топлива" />
-                            <DataGridTextColumn Header="Цена покупки" />
-                            <DataGridTextColumn Header="Цена продажи" />
-                            <DataGridTextColumn Header="Цена аренды" />
-                            <DataGridTextColumn Header="Срок владения" />
-                            <DataGridTextColumn Header="Местоположение " />
-                            <DataGridTextColumn Header="В рейсе?" />
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding QuantitySeat}"  />
+                            <DataGridTextColumn Header="Допустимый вес груза" Binding="{Binding MaxLoad}"/>
+                            <DataGridTextColumn Header="Допустимая дальность перелета" Binding="{Binding DistanceFly}" />
+                            <DataGridTextColumn Header="Скорость" Binding="{Binding Speed}"/>
+                            <DataGridTextColumn Header="Расход топлива" Binding="{Binding Fuel}"/>
+                            <DataGridTextColumn Header="Цена покупки" Binding="{Binding PriceBuy}"/>
+                            <DataGridTextColumn Header="Цена продажи" Binding="{Binding PriceSale}"/>
+                            <DataGridTextColumn Header="Цена аренды" Binding="{Binding PriceRent}" />
+                            <DataGridTextColumn Header="Срок владения" Binding="{Binding RentDays}" />
+                            <DataGridTextColumn Header="Местоположение" Binding="{Binding Location}" />
+                            <DataGridTextColumn Header="В рейсе?" Binding="{Binding InFly}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right">
+                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Grid.Column="1">
                         <Button Name="SellAirplane" Content="Продать Самолет" Click="SellAirplane_Click" />
                         <Button Name="TransferAirplane" Content="Перегнать Самолет" Click="TransferAirplane_Click" />
                     </WrapPanel>
@@ -167,7 +171,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0" Name="ShopDataGrid" ItemsSource="{Binding AirplaneShop}" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                    <DataGrid Grid.Row="0" Name="ShopDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
                             <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding QuantitySeat}" />
