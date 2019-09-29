@@ -77,15 +77,15 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
-                            <!--<DataGridTextColumn Binding="{}" Header="Расстояние" />
-                            <DataGridTextColumn Binding="{}" Header="Вид" />
-                            <DataGridTextColumn Binding="{}" Header="Тип" />
-                            <DataGridTextColumn Binding="{}" Header="Частота" />
-                            <DataGridTextColumn Binding="{}" Header="Необходимая грузоподъемность" />
-                            <DataGridTextColumn Binding="{}" Header="Оплата за одного пассажира" />
-                            <DataGridTextColumn Binding="{}" Header="Оплата за рейс" />-->
+                            <DataGridTextColumn Header="Расстояние" />
+                            <DataGridTextColumn Header="Вид" />
+                            <DataGridTextColumn Header="Тип" />
+                            <DataGridTextColumn Header="Частота" />
+                            <DataGridTextColumn Header="Необходимая грузоподъемность" />
+                            <DataGridTextColumn Header="Оплата за одного пассажира" />
+                            <DataGridTextColumn Header="Оплата за рейс" />
                             <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
-                            <!--<DataGridTextColumn Binding="{}" Header="Сумма неустойки" />-->
+                            <DataGridTextColumn Header="Сумма неустойки" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -108,14 +108,14 @@
                             <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
                             <DataGridTextColumn Binding="{Binding Direction.Distance}" Header="Расстояние" />
-                            <!--<DataGridTextColumn Binding="{}" Header="Вид" />
-                            <DataGridTextColumn Binding="{}" Header="Тип" />
-                            <DataGridTextColumn Binding="{}" Header="Частота" />
-                            <DataGridTextColumn Binding="{}" Header="Необходимая грузоподъемность" />
-                            <DataGridTextColumn Binding="{}" Header="Оплата за одного пассажира" />
-                            <DataGridTextColumn Binding="{}" Header="Оплата за рейс" />-->
+                            <DataGridTextColumn Header="Вид" />
+                            <DataGridTextColumn Header="Тип" />
+                            <DataGridTextColumn Header="Частота" />
+                            <DataGridTextColumn Header="Необходимая грузоподъемность" />
+                            <DataGridTextColumn Header="Оплата за одного пассажира" />
+                            <DataGridTextColumn Header="Оплата за рейс" />
                             <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
-                            <!--<DataGridTextColumn Binding="{}" Header="Сумма неустойки" />-->
+                            <DataGridTextColumn Header="Сумма неустойки" />
                         </DataGrid.Columns>
                     </DataGrid>
 
