@@ -23,10 +23,6 @@ namespace airport_simulator_2019.GameObjects
             return airplane;
         }
 
-        public void ReturnRent(Airplane airplane)
-        {
-            _airplanes.Find(x => x == airplane).RentEnd = null;
-        }
 
         public Shop()
         {
@@ -200,6 +196,17 @@ namespace airport_simulator_2019.GameObjects
             return airplane;
         }
 
+        public override void DayBegin()
+        {
+            foreach (var item in _airplanes)
+            {
+                if (item.RentEnd != null)
+                {
+                    int payment = item.PriceRent;
+                    Game.Player.Pay(payment);
+                }
+            }
+        }
 
     }
 

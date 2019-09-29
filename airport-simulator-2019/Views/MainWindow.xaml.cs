@@ -22,6 +22,7 @@ namespace airport_simulator_2019
             _game.Run();
 
             _game.Tick = OnTick;
+            _game.DayBegin = OnDayBegin;
 
             UpdateUI();
         }
@@ -156,6 +157,11 @@ namespace airport_simulator_2019
         private void OnTick()
         {
             UpdateTime();
+        }
+
+        private void OnDayBegin()
+        {
+            UpdateUI();
         }
 
         private void UpdateTime()

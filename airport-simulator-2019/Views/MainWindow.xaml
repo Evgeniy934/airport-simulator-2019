@@ -177,7 +177,7 @@
                             <DataGridTextColumn Header="Расход топлива" Binding="{Binding Fuel}" />
                             <DataGridTextColumn Header="Цена покупки" Binding="{Binding PriceBuy}" />
                             <DataGridTextColumn Header="Цена продажи" Binding="{Binding PriceSale}" />
-                            <DataGridTextColumn Header="Цена аренды" Binding="{Binding RentDay}" />
+                            <DataGridTextColumn Header="Цена аренды" Binding="{Binding PriceRent}" />
                         </DataGrid.Columns>
                     </DataGrid>
 

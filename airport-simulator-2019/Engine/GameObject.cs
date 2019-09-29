@@ -12,6 +12,7 @@ namespace airport_simulator_2019.Engine
         public GameObject()
         {
             Game = Game.GetInstance();
+            Game.RegisterObject(this);
 
             Id = $"{GetType().Name}{_counter}";
             _counter++;
@@ -29,6 +30,9 @@ namespace airport_simulator_2019.Engine
         {
             return obj != null && obj.Id == Id;
         }
+
+        public virtual void DayBegin()
+        { }
 
     }
 }
