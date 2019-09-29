@@ -38,7 +38,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0">
+                    <DataGrid Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Город отправления" />
                             <DataGridTextColumn Header="Город назначения" />
@@ -73,7 +73,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="MyFlighsGrid" Grid.Row="0">
+                    <DataGrid Name="MyFlighsGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
@@ -103,7 +103,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="FlightBoardGrid" Grid.Row="0">
+                    <DataGrid Name="FlightBoardGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
