@@ -67,6 +67,70 @@ namespace airport_simulator_2019.GameObjects
                 Longitude = 151.209290
             });
 
+            Cities.Add(new City
+            {
+                Name = "Москва",
+                Latitude = 55.75222,
+                Longitude = 37.61556
+            });
+
+            Cities.Add(new City
+            {
+                Name = "Казань",
+                Latitude = 55.78874,
+                Longitude = 49.12214
+            });
+
+            Cities.Add(new City
+            {
+                Name = "Волгоград",
+                Latitude = 48.707103,
+                Longitude = 44.516939
+            });
+
+            Cities.Add(new City
+            {
+                Name = "Нью-Йорк",
+                Latitude = 40.7142700,
+                Longitude = -74.0059700
+            });
+            Cities.Add(new City
+            {
+                Name = "Ростов-На-Дону",
+                Latitude = 47.222531,
+                Longitude = 39.718705
+            });
+            Cities.Add(new City
+            {
+                Name = "Вашингтон",
+                Latitude = 38.89511,
+                Longitude = -77.03637
+            });
+            Cities.Add(new City
+            {
+                Name = "Милан",
+                Latitude = 45.4642700,
+                Longitude = 9.1895100
+            });
+            Cities.Add(new City
+            {
+                Name = "Токио",
+                Latitude = 35.6895,
+                Longitude = 139.69171
+            });
+            Cities.Add(new City
+            {
+                Name = "Гонконг",
+                Latitude = 22.2855200,
+                Longitude = 114.1576900
+            });
+            Cities.Add(new City
+            {
+                Name = "Сидней",
+                Latitude = 48.472584,
+                Longitude = 135.057732
+            });
+
         }
     }
 }
