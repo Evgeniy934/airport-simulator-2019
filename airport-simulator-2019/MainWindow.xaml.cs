@@ -20,6 +20,9 @@ namespace airport_simulator_2019
             DataContext = this;
             
             _game.Run();
+
+            _game.Tick = OnTick;
+
             UpdateUI();
         }
 
@@ -29,7 +32,7 @@ namespace airport_simulator_2019
             Fast.IsEnabled = true;
             VeryFast.IsEnabled = true;
 
-            //_game.SetNormalSpeed();
+            _game.GameSpeed = 0;
         }
 
         private void Fast_Click(object sender, RoutedEventArgs e)
@@ -38,7 +41,7 @@ namespace airport_simulator_2019
             Fast.IsEnabled = false;
             VeryFast.IsEnabled = true;
 
-            //_game.SetFastSpeed();
+            _game.GameSpeed = 1;
         }
 
         private void VeryFast_Click(object sender, RoutedEventArgs e)
@@ -47,7 +50,7 @@ namespace airport_simulator_2019
             Fast.IsEnabled = true;
             VeryFast.IsEnabled = false;
 
-            //_game.SetVeryFastSpeed();
+            _game.GameSpeed = 2;
         }
 
         private void BuyAirplane_Click(object sender, RoutedEventArgs e)
@@ -139,6 +142,17 @@ namespace airport_simulator_2019
             }
 
             Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
+
+        }
+
+        private void OnTick()
+        {
+            UpdateTime();
+        }
+
+        private void UpdateTime()
+        {
+            CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
         }
     }
 }
