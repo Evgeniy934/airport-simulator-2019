@@ -17,7 +17,7 @@
 
         <WrapPanel Grid.Row="0" Margin="5" HorizontalAlignment="Left">
             <TextBlock Margin="5" Text="Дата окончания аренды:" />
-            <DatePicker Margin="5" />
+            <DatePicker Name ="RentDateSelect" Margin="5" />
         </WrapPanel>
 
         <WrapPanel Grid.Row="1" Margin="5" HorizontalAlignment="Left">

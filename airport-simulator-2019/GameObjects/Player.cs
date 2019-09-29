@@ -37,7 +37,16 @@ namespace airport_simulator_2019.GameObjects
             }
         }
 
-
+        public void RentAirplane(Airplane airplane, DateTime dateEnd)
+        {
+            int price = Game.Shop.Airplanes.Find(x => x == airplane).PriceRent;
+            if (Balance >= price)
+            {
+                Airplane plane = Game.Shop.Rent(airplane, dateEnd);
+                Airplanes.Add(plane);
+                Balance -= price;
+            }
+        }
 
     }
 

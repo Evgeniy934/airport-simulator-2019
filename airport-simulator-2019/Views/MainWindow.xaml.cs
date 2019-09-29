@@ -81,7 +81,15 @@ namespace airport_simulator_2019
             var dialog = new RentAirplaneDialog();
             if ((bool)dialog.ShowDialog())
             {
-                MessageBox.Show("Успех");
+                DateTime? dateEnd = dialog.RentDateSelect.SelectedDate;
+                Airplane airplane = (Airplane)ShopDataGrid.SelectedItem;
+                if (dateEnd.HasValue && airplane != null)
+                {
+                    _game.Player.RentAirplane(airplane, dateEnd.Value);
+                    UpdateUI();
+                    MessageBox.Show("Успех");
+                }
+
             }
         }
 

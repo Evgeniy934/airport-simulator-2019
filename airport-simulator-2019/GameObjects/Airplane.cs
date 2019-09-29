@@ -12,7 +12,7 @@ namespace airport_simulator_2019.GameObjects
         public int Speed { get; set; } // скорость
         public int QuantitySeat { get; set; } // кол-во мест
         public int Fuel { get; set; } // расход топлива
-        public int RentDay { get; set; } // цена аренды за 1 день
+        public int PriceRent { get; set; } // цена аренды за 1 день
         public int RentDate { get; set; } // срок владения (аренды) в днях
         public string Location { get; set; }  //местоположение
         public bool InFly { get; set; } // находится ли самолет в полете
@@ -21,6 +21,8 @@ namespace airport_simulator_2019.GameObjects
 
         public int PriceBuy { get; set; } // цена покупки
         public int PriceSale { get; set; } // цена продажи
+
+        public DateTime? RentEnd { get; set; }
 
         public Airplane()
         {
