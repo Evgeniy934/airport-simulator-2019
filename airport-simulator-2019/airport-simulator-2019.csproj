@@ -59,6 +59,11 @@
       <DependentUpon>AddToScheduleDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Airplane.cs" />
+    <Compile Include="Engine\Game.cs" />
+    <Compile Include="Engine\GameObject.cs" />
+    <Compile Include="GameObjects\Airplane.cs" />
+    <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Shop.cs" />
     <Compile Include="ListAirplane.cs" />
     <Compile Include="RentAirplaneDialog.xaml.cs">
       <DependentUpon>RentAirplaneDialog.xaml</DependentUpon>

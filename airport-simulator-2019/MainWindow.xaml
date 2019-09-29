@@ -14,8 +14,9 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="115*" />
+            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="198*" />
         </Grid.ColumnDefinitions>
 
         <WrapPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
@@ -25,11 +26,11 @@
             <Button Name="VeryFast" Content=">>>" Margin="2 0 2 0" Click="VeryFast_Click" />
         </WrapPanel>
 
-        <WrapPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-            <TextBlock Text="{Binding Balance, StringFormat=Бюджет Аэропорта: {0} руб.}" />
+        <WrapPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right">
+            <TextBlock Name="Balance" Text="{Binding Balance, StringFormat=Бюджет Аэропорта: {0} руб.}" />
         </WrapPanel>
 
-        <TabControl Grid.Row="1" Grid.ColumnSpan="2">
+        <TabControl Grid.Row="1" Grid.ColumnSpan="3">
             <TabItem Header="Расписание">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -64,7 +65,7 @@
                     </WrapPanel>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Мои Рейсы">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -94,7 +95,7 @@
                     </WrapPanel>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Доска Объявлений">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -123,7 +124,7 @@
                     </WrapPanel>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Мои Самолеты">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -154,29 +155,33 @@
                     </WrapPanel>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Магазин Самолетов">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="323*"/>
+                        <ColumnDefinition Width="463*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0" ItemsSource="{Binding AirplaneShop}" AutoGenerateColumns="False">
+                    <DataGrid Grid.Row="0" Name="ShopDataGrid" ItemsSource="{Binding AirplaneShop}" AutoGenerateColumns="False" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
-                            <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding Quantity_seat}" />
-                            <DataGridTextColumn Header="Допустимый вес груза" Binding="{Binding Max_load}" />
-                            <DataGridTextColumn Header="Допустимая дальность перелета" Binding="{Binding Distance_fly}" />
+                            <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding QuantitySeat}" />
+                            <DataGridTextColumn Header="Допустимый вес груза" Binding="{Binding MaxLoad}" />
+                            <DataGridTextColumn Header="Допустимая дальность перелета" Binding="{Binding DistanceFly}" />
                             <DataGridTextColumn Header="Скорость" Binding="{Binding Speed}" />
                             <DataGridTextColumn Header="Расход топлива" Binding="{Binding Fuel}" />
-                            <DataGridTextColumn Header="Цена покупки" Binding="{Binding Price_buy}" />
-                            <DataGridTextColumn Header="Цена продажи" Binding="{Binding Price_sale}" />
-                            <DataGridTextColumn Header="Цена аренды" Binding="{Binding Rent_day}" />
+                            <DataGridTextColumn Header="Цена покупки" Binding="{Binding PriceBuy}" />
+                            <DataGridTextColumn Header="Цена продажи" Binding="{Binding PriceSale}" />
+                            <DataGridTextColumn Header="Цена аренды" Binding="{Binding RentDay}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right">
+                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Grid.Column="1">
                         <Button Name="BuyAirplane" Content="Купить Самолет" Click="BuyAirplane_Click" />
                         <Button Name="RentAirplane" Content="Арендовать Самолет" Click="RentAirplane_Click" />
                     </WrapPanel>

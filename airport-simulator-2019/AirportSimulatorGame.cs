@@ -1,4 +1,6 @@
-﻿using System;
+﻿using airport_simulator_2019.Engine;
+using airport_simulator_2019.GameObjects;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -12,7 +14,6 @@ namespace airport_simulator_2019
         private int _offset;
         private int _balance;
 
-        public ObservableCollection<Airplane> AirplaneShop { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -49,14 +50,6 @@ namespace airport_simulator_2019
             }
         }
 
-        public AirportSimulatorGame()
-        {
-            _offset = 1;
-            Time = DateTime.Now;
-            Balance = 1000000;
-            AirplaneShop = new ObservableCollection<Airplane>(ListAirplane.GetList());
-        }
-
         public void SetNormalSpeed()
         {
             _offset = 1;
@@ -74,6 +67,9 @@ namespace airport_simulator_2019
 
         public async void Run()
         {
+            _offset = 1;
+            Time = DateTime.Now;
+            Balance = 1000000;
             while (true)
             {
                 Time = Time.AddSeconds(_offset);

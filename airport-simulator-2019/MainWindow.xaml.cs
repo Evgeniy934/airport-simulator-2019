@@ -1,17 +1,26 @@
-﻿using System.Threading.Tasks;
+﻿using airport_simulator_2019.Engine;
+using airport_simulator_2019.GameObjects;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace airport_simulator_2019
 {
     public partial class MainWindow : Window
     {
-        AirportSimulatorGame _game = new AirportSimulatorGame();
+        private Game _game = Game.GetInstance();
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = _game;
-            Task.Run(() =>_game.Run());
+            DataContext = this;
+            
+            _game.Run();
+            UpdateUI();
         }
 
         private void RealTime_Click(object sender, RoutedEventArgs e)
@@ -20,7 +29,7 @@ namespace airport_simulator_2019
             Fast.IsEnabled = true;
             VeryFast.IsEnabled = true;
 
-            _game.SetNormalSpeed();
+            //_game.SetNormalSpeed();
         }
 
         private void Fast_Click(object sender, RoutedEventArgs e)
@@ -29,7 +38,7 @@ namespace airport_simulator_2019
             Fast.IsEnabled = false;
             VeryFast.IsEnabled = true;
 
-            _game.SetFastSpeed();
+            //_game.SetFastSpeed();
         }
 
         private void VeryFast_Click(object sender, RoutedEventArgs e)
@@ -38,7 +47,7 @@ namespace airport_simulator_2019
             Fast.IsEnabled = true;
             VeryFast.IsEnabled = false;
 
-            _game.SetVeryFastSpeed();
+            //_game.SetVeryFastSpeed();
         }
 
         private void BuyAirplane_Click(object sender, RoutedEventArgs e)
@@ -46,9 +55,12 @@ namespace airport_simulator_2019
             switch (MessageBox.Show("Вы уверены, что хотите выкупить этот самолет?", "Подтверждение покупки", MessageBoxButton.YesNo))
             {
                 case MessageBoxResult.Yes:
-                    MessageBox.Show("Успех");
+                    Airplane airplane = (Airplane)ShopDataGrid.SelectedItem;
+                    _game.Player.BuyAirplane(airplane);
+                    UpdateUI();
                     break;
             }
+
         }
 
         private void SellAirplane_Click(object sender, RoutedEventArgs e)
@@ -116,6 +128,17 @@ namespace airport_simulator_2019
             {
                 MessageBox.Show("Успех");
             }
+        }
+
+        private void UpdateUI()
+        {
+            ShopDataGrid.Items.Clear();
+            foreach (var item in _game.Shop.Airplanes)
+            {
+                ShopDataGrid.Items.Add(item);
+            }
+
+            Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
         }
     }
 }
