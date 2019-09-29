@@ -23,7 +23,7 @@ namespace airport_simulator_2019.GameObjects
             var departureCoordinate = new GeoCoordinate(direction.Departure.Latitude, direction.Departure.Longitude);
             var arrivalCoordinate = new GeoCoordinate(direction.Arrival.Latitude, direction.Arrival.Longitude);
 
-            direction.Distance = (int) departureCoordinate.GetDistanceTo(arrivalCoordinate);
+            direction.Distance = (int) departureCoordinate.GetDistanceTo(arrivalCoordinate) / 1000;
 
             return direction;
         }
