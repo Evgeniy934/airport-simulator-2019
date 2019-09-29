@@ -79,28 +79,36 @@ namespace airport_simulator_2019
 
         private void RentAirplane_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new RentAirplaneDialog();
-            if ((bool)dialog.ShowDialog())
+            Airplane airplane = (Airplane)ShopDataGrid.SelectedItem;
+            if (airplane != null)
             {
-                DateTime? dateEnd = dialog.RentDateSelect.SelectedDate;
-                Airplane airplane = (Airplane)ShopDataGrid.SelectedItem;
-                if (dateEnd.HasValue && airplane != null)
+                var dialog = new RentAirplaneDialog();
+                if ((bool)dialog.ShowDialog())
                 {
-                    _game.Player.RentAirplane(airplane, dateEnd.Value);
-                    UpdateUI();
-                    MessageBox.Show("Успех");
+                    DateTime? dateEnd = dialog.RentDateSelect.SelectedDate;
+                    if (dateEnd.HasValue)
+                    {
+                        _game.Player.RentAirplane(airplane, dateEnd.Value);
+                        UpdateUI();
+                        MessageBox.Show("Успех");
+                    }
                 }
-
             }
         }
 
         private void TakeFlight_Click(object sender, RoutedEventArgs e)
         {
-            switch (MessageBox.Show("Вы уверены, что хотите взять этот рейс?", "Подтверждение взятия рейса", MessageBoxButton.YesNo))
+            Flight flight = (Flight)FlightBoardGrid.SelectedItem;
+            if (flight != null)
             {
-                case MessageBoxResult.Yes:
-                    MessageBox.Show("Успех");
-                    break;
+                switch (MessageBox.Show("Вы уверены, что хотите взять этот рейс?", "Подтверждение взятия рейса", MessageBoxButton.YesNo))
+                {
+                    case MessageBoxResult.Yes:
+                        _game.Player.TakeFromFlightBoard(flight);
+                        UpdateUI();
+                        MessageBox.Show("Успех");
+                        break;
+                }
             }
         }
 
@@ -162,6 +170,11 @@ namespace airport_simulator_2019
                 FlightBoardGrid.Items.Add(item);
             }
 
+            MyFlighsGrid.Items.Clear();
+            foreach (var item in _game.Player.Flights)
+            {
+                MyFlighsGrid.Items.Add(item);
+            }
 
             Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
 

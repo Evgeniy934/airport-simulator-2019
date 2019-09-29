@@ -10,11 +10,13 @@ namespace airport_simulator_2019.GameObjects
     public class Player : GameObject
     {
         public List<Airplane> Airplanes { get; }
+        public List<Flight> Flights { get; }
         public int Balance { get; private set; }
 
         public Player()
         {
             Airplanes = new List<Airplane>();
+            Flights = new List<Flight>();
             Balance = 100000000;
         }
 
@@ -46,6 +48,12 @@ namespace airport_simulator_2019.GameObjects
                 Airplanes.Add(plane);
                 Balance -= price;
             }
+        }
+
+        public void TakeFromFlightBoard(Flight flight)
+        {
+            Flight taken = Game.FlightBoard.TakeFlight(flight);
+            Flights.Add(taken);
         }
 
     }

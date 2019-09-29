@@ -11,7 +11,13 @@ namespace airport_simulator_2019.GameObjects
         {
             Flights = GenerateFlights();
         }
-        
+
+        public Flight TakeFlight(Flight flight)
+        {
+            Flights.Remove(flight);
+            return flight;
+        }
+
         public override void DayBegin()
         {
             Flights.RemoveAll(x => Game.Time.DayOfYear >= x.ExpireDate.DayOfYear);
