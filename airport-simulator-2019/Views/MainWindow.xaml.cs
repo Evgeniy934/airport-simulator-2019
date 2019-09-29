@@ -56,24 +56,45 @@ namespace airport_simulator_2019
 
         private void BuyAirplane_Click(object sender, RoutedEventArgs e)
         {
-            switch (MessageBox.Show("Вы уверены, что хотите выкупить этот самолет?", "Подтверждение покупки", MessageBoxButton.YesNo))
+            Airplane airplane = (Airplane)ShopDataGrid.SelectedItem;
+            if (airplane == null)
             {
-                case MessageBoxResult.Yes:
-                    Airplane airplane = (Airplane)ShopDataGrid.SelectedItem;
-                    _game.Player.BuyAirplane(airplane);
-                    UpdateUI();
-                    break;
+                MessageBox.Show("Выберете самолет!");
             }
-
+            else
+            {
+                switch (MessageBox.Show("Вы уверены, что хотите выкупить этот самолет?", "Подтверждение покупки", MessageBoxButton.YesNo))
+                {
+                    case MessageBoxResult.Yes:
+                        _game.Player.BuyAirplane(airplane);
+                        UpdateUI();
+                        break;
+                }
+            }
         }
 
         private void SellAirplane_Click(object sender, RoutedEventArgs e)
         {
-            switch (MessageBox.Show("Вы уверены, что хотите продать этот самолет?", "Подтверждение продажи", MessageBoxButton.YesNo))
+            Airplane airplane = (Airplane)MyAirplanesGrid.SelectedItem;
+            if (airplane == null)
             {
-                case MessageBoxResult.Yes:
-                    MessageBox.Show("Успех");
-                    break;
+                MessageBox.Show("Выберете самолет!");
+            } else
+            { if (airplane.RentDays != -1)
+                {
+                    MessageBox.Show("Нельзя продать арендованный самолет!");
+                }
+                else
+                {
+                    switch (MessageBox.Show("Вы уверены, что хотите продать этот самолет?", "Подтверждение продажи", MessageBoxButton.YesNo))
+                    {
+                        case MessageBoxResult.Yes:
+                            _game.Player.SaleAirplane(airplane);
+                            UpdateUI();
+                            break;
+
+                    }
+                }
             }
         }
 

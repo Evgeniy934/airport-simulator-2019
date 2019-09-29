@@ -37,6 +37,11 @@ namespace airport_simulator_2019.GameObjects
             return airplane;
         }
 
+        public Airplane Sale(Airplane airplane)
+        {
+            _airplanes.Add(airplane);
+            return airplane;
+        }
         public override void DayBegin()
         {
             foreach (var item in _airplanes)

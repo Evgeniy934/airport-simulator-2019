@@ -128,15 +128,16 @@
             <TabItem Header="Мои Самолеты">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="199*"/>
-                        <ColumnDefinition Width="194*"/>
+                        <ColumnDefinition Width="398*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="354*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="MyAirplanesGrid" Grid.Row="0" Grid.ColumnSpan="2">
+                    <DataGrid Name="MyAirplanesGrid" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,20" Grid.RowSpan="2" IsReadOnly="True"  SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
                             <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding QuantitySeat}"  />
@@ -153,7 +154,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Grid.Column="1">
+                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Grid.Column="2" Margin="0,20,0,0">
                         <Button Name="SellAirplane" Content="Продать Самолет" Click="SellAirplane_Click" />
                         <Button Name="TransferAirplane" Content="Перегнать Самолет" Click="TransferAirplane_Click" />
                     </WrapPanel>
@@ -163,15 +164,17 @@
             <TabItem Header="Магазин Самолетов">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="323*"/>
-                        <ColumnDefinition Width="463*"/>
+                        <ColumnDefinition Width="289*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="446*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0" Name="ShopDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                    <DataGrid Grid.Row="0" Name="ShopDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="4" IsReadOnly="True"  SelectionMode="Single" Margin="0,0,0,20" Grid.RowSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
                             <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding QuantitySeat}" />
@@ -185,7 +188,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Grid.Column="1">
+                    <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Grid.Column="3" Margin="0,40,0,0">
                         <Button Name="BuyAirplane" Content="Купить Самолет" Click="BuyAirplane_Click" />
                         <Button Name="RentAirplane" Content="Арендовать Самолет" Click="RentAirplane_Click" />
                     </WrapPanel>
