@@ -156,6 +156,13 @@ namespace airport_simulator_2019
                 MyAirplanesGrid.Items.Add(item);
             }
 
+            FlightBoardGrid.Items.Clear();
+            foreach (var item in _game.FlightBoard.Flights)
+            {
+                FlightBoardGrid.Items.Add(item);
+            }
+
+
             Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
 
         }

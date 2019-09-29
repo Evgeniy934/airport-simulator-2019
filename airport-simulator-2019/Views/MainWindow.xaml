@@ -103,19 +103,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0">
+                    <DataGrid Name="FlightBoardGrid" Grid.Row="0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Город отправления" />
-                            <DataGridTextColumn Header="Город назначения" />
-                            <DataGridTextColumn Header="Расстояние" />
-                            <DataGridTextColumn Header="Вид" />
-                            <DataGridTextColumn Header="Тип" />
-                            <DataGridTextColumn Header="Частота" />
-                            <DataGridTextColumn Header="Необходимая грузоподъемность" />
-                            <DataGridTextColumn Header="Оплата за одного пассажира" />
-                            <DataGridTextColumn Header="Оплата за рейс" />
-                            <DataGridTextColumn Header="Дата" />
-                            <DataGridTextColumn Header="Сумма неустойки" />
+                            <DataGridTextColumn Binding="{Binding DepartureCity}" Header="Город отправления" />
+                            <DataGridTextColumn Binding="{Binding DestinationCity}" Header="Город назначения" />
+                            <!--<DataGridTextColumn Binding="{}" Header="Расстояние" />
+                            <DataGridTextColumn Binding="{}" Header="Вид" />
+                            <DataGridTextColumn Binding="{}" Header="Тип" />
+                            <DataGridTextColumn Binding="{}" Header="Частота" />
+                            <DataGridTextColumn Binding="{}" Header="Необходимая грузоподъемность" />
+                            <DataGridTextColumn Binding="{}" Header="Оплата за одного пассажира" />
+                            <DataGridTextColumn Binding="{}" Header="Оплата за рейс" />-->
+                            <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
+                            <!--<DataGridTextColumn Binding="{}" Header="Сумма неустойки" />-->
                         </DataGrid.Columns>
                     </DataGrid>
 

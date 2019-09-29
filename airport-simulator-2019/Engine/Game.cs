@@ -16,6 +16,7 @@ namespace airport_simulator_2019.Engine
         public int GameSpeed { get; set; }
         public Player Player { get; private set; }
         public Shop Shop { get; private set; }
+        public FlightBoard FlightBoard { get; private set; }
 
 
         public Action Tick;
@@ -37,6 +38,7 @@ namespace airport_simulator_2019.Engine
 
             Player = new Player();
             Shop = new Shop();
+            FlightBoard = new FlightBoard();
 
             _timer.Tick += new EventHandler(OnTick);
             _timer.Interval = new TimeSpan(0, 0, 1);
@@ -57,10 +59,11 @@ namespace airport_simulator_2019.Engine
 
             if (_currentDay != Time.DayOfYear)
             {
-                foreach (var obj in _gameObjects)
+                for (int i = _gameObjects.Count - 1; i >= 0; i--)
                 {
-                    obj.DayBegin();
+                    _gameObjects[i].DayBegin();
                 }
+
                 _currentDay = Time.DayOfYear;
                 DayBegin?.Invoke();
             }
