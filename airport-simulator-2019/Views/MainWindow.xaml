@@ -75,8 +75,8 @@
 
                     <DataGrid Name="MyFlighsGrid" Grid.Row="0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding DepartureCity}" Header="Город отправления" />
-                            <DataGridTextColumn Binding="{Binding DestinationCity}" Header="Город назначения" />
+                            <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
+                            <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
                             <!--<DataGridTextColumn Binding="{}" Header="Расстояние" />
                             <DataGridTextColumn Binding="{}" Header="Вид" />
                             <DataGridTextColumn Binding="{}" Header="Тип" />
@@ -105,10 +105,10 @@
 
                     <DataGrid Name="FlightBoardGrid" Grid.Row="0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding DepartureCity}" Header="Город отправления" />
-                            <DataGridTextColumn Binding="{Binding DestinationCity}" Header="Город назначения" />
-                            <!--<DataGridTextColumn Binding="{}" Header="Расстояние" />
-                            <DataGridTextColumn Binding="{}" Header="Вид" />
+                            <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
+                            <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
+                            <DataGridTextColumn Binding="{Binding Direction.Distance}" Header="Расстояние" />
+                            <!--<DataGridTextColumn Binding="{}" Header="Вид" />
                             <DataGridTextColumn Binding="{}" Header="Тип" />
                             <DataGridTextColumn Binding="{}" Header="Частота" />
                             <DataGridTextColumn Binding="{}" Header="Необходимая грузоподъемность" />
@@ -148,7 +148,7 @@
                             <DataGridTextColumn Header="Цена продажи" Binding="{Binding PriceSale}"/>
                             <DataGridTextColumn Header="Цена аренды" Binding="{Binding PriceRent}" />
                             <DataGridTextColumn Header="Срок владения" Binding="{Binding RentDays}" />
-                            <DataGridTextColumn Header="Местоположение" Binding="{Binding Location}" />
+                            <DataGridTextColumn Header="Местоположение" Binding="{Binding Location.Name}" />
                             <DataGridTextColumn Header="В рейсе?" Binding="{Binding InFly}" />
                         </DataGrid.Columns>
                     </DataGrid>

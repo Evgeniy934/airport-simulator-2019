@@ -3,7 +3,6 @@ using System;
 
 namespace airport_simulator_2019.GameObjects
 {
-
     public class Airplane : GameObject
     {
         public string Name { get; set; }  // название самолета
@@ -14,7 +13,7 @@ namespace airport_simulator_2019.GameObjects
         public int Fuel { get; set; } // расход топлива
         public int PriceRent { get; set; } // цена аренды за 1 день
         public int RentDays { get; set; } // срок владения (аренды) в днях
-        public string Location { get; set; }  //местоположение
+        public City Location { get; set; }  //местоположение
         public bool InFly { get; set; } // находится ли самолет в полете
                                         
         ///

@@ -12,12 +12,14 @@ namespace airport_simulator_2019.GameObjects
         public List<Airplane> Airplanes { get; }
         public List<Flight> Flights { get; }
         public int Balance { get; private set; }
+        public City HomeCity { get; private set; }
 
         public Player()
         {
             Airplanes = new List<Airplane>();
             Flights = new List<Flight>();
             Balance = 100000000;
+            HomeCity = CityCatalog.Cities.Find(x => x.Name == "Пермь");
         }
 
         public void Pay(int howMuch)

@@ -26,23 +26,19 @@ namespace airport_simulator_2019.GameObjects
 
         private List<Flight> GenerateFlights()
         {
-            List<Flight> flights = new List<Flight>();
+            var flights = new List<Flight>();
 
             flights.Add(
                 new Flight
                 {
-                    DepartureCity = "Москва",
-                    DestinationCity = "СПБ",
-                    Distance = 1000,
+                    Direction = CityCatalog.GetFlightDirection(),
                     PriceFlight = 100000,
                     ExpireDate = Game.Time.AddDays(2)
                 });
             flights.Add(
                 new Flight
                 {
-                    DepartureCity = "Владивосток",
-                    DestinationCity = "Москва",
-                    Distance = 6000,
+                    Direction = CityCatalog.GetFlightDirection(),
                     PriceFlight = 500000,
                     ExpireDate = Game.Time.AddDays(2)
                 });

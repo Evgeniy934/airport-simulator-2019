@@ -51,6 +51,8 @@ namespace airport_simulator_2019.GameObjects
 
         private List<Airplane> GenerateAirplanes()
         {
+            City city = Game.Player.HomeCity;
+
             List<Airplane> airplanes = new List<Airplane>();
             airplanes.Add(new Airplane
             {
@@ -61,7 +63,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 8300,
                 Fuel = 8300,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 400000,
                 PriceBuy = 5000000,
                 PriceSale = 2500000,
@@ -77,7 +79,7 @@ namespace airport_simulator_2019.GameObjects
                 DistanceFly = 4500,
                 Fuel = 3500,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 550000,
                 PriceBuy = 6000000,
                 PriceSale = 3000000,
@@ -93,7 +95,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 12200,
                 Fuel = 2300,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 620000,
                 PriceBuy = 8000000,
                 PriceSale = 4000000,
@@ -109,7 +111,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 25000,
                 Fuel = 7300,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 800000,
                 PriceBuy = 8000000,
                 PriceSale = 4000000,
@@ -125,7 +127,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 42000,
                 Fuel = 9900,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 9500000,
                 PriceBuy = 10000000,
                 PriceSale = 5000000,
@@ -141,7 +143,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 20500,
                 Fuel = 2500,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 710000,
                 PriceBuy = 3000000,
                 PriceSale = 1500000,
@@ -157,7 +159,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 33500,
                 Fuel = 8300,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 660000,
                 PriceBuy = 5500000,
                 PriceSale = 2750000,
@@ -173,7 +175,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 70000,
                 Fuel = 11300,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 1500000,
                 PriceBuy = 35000000,
                 PriceSale = 175000000,
@@ -189,7 +191,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 40200,
                 Fuel = 4500,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 1100000,
                 PriceBuy = 27000000,
                 PriceSale = 13500000,
@@ -205,7 +207,7 @@ namespace airport_simulator_2019.GameObjects
                 MaxLoad = 51700,
                 Fuel = 5900,
                 InFly = false,
-                Location = "",
+                Location = city,
                 PriceRent = 12000000,
                 PriceBuy = 22000000,
                 PriceSale = 11000000,
