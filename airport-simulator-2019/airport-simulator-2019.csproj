@@ -55,44 +55,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddToScheduleDialog.xaml.cs">
+    <Compile Include="Views\AddToScheduleDialog.xaml.cs">
       <DependentUpon>AddToScheduleDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Airplane.cs" />
     <Compile Include="Engine\Game.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="GameObjects\Airplane.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameObjects\Shop.cs" />
-    <Compile Include="ListAirplane.cs" />
-    <Compile Include="RentAirplaneDialog.xaml.cs">
+    <Compile Include="Views\RentAirplaneDialog.xaml.cs">
       <DependentUpon>RentAirplaneDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TransferAirplaneDialog.xaml.cs">
+    <Compile Include="Views\TransferAirplaneDialog.xaml.cs">
       <DependentUpon>TransferAirplaneDialog.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddToScheduleDialog.xaml">
+    <Page Include="Views\AddToScheduleDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AirportSimulatorGame.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RentAirplaneDialog.xaml">
+    <Page Include="Views\RentAirplaneDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TransferAirplaneDialog.xaml">
+    <Page Include="Views\TransferAirplaneDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
