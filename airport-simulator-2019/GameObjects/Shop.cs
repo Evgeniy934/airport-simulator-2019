@@ -57,6 +57,7 @@ namespace airport_simulator_2019.GameObjects
                         if (airplane.InFly)
                         {
                             airplane.RentDays += 1;
+                            Game.Player.Pay(payment);
                         }
                         else
                         {
