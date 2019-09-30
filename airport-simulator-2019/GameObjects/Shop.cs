@@ -61,6 +61,7 @@ namespace airport_simulator_2019.GameObjects
                         else
                         {
                             airplane.RentEnd = null;
+                            airplane.RentDays = -1;
                             Game.Player.ReturnRentedAirplane(airplane);
                         }
                     }
