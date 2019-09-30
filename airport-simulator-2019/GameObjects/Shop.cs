@@ -21,7 +21,7 @@ namespace airport_simulator_2019.GameObjects
         {
             _airplanes.Find(x => x == airplane).RentEnd = dateEnd;
             Airplane rent = _airplanes.Find(x => x == airplane);
-            rent.RentDays = (dateEnd - Game.Time).Days;
+            rent.RentDays = (dateEnd - Game.Time).Days + 1;
             return airplane;
         }
 
@@ -50,6 +50,13 @@ namespace airport_simulator_2019.GameObjects
                 {
                     int payment = item.PriceRent;
                     Game.Player.Pay(payment);
+
+                    item.RentDays -= 1;
+                    if (item.RentDays == 0)
+                    {
+                        item.RentEnd = null;
+                        Game.Player.ReturnRentedAirplane(item);
+                    }
                 }
             }
         }

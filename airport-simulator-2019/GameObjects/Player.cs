@@ -71,6 +71,11 @@ namespace airport_simulator_2019.GameObjects
             Flights.Add(taken);
         }
 
+        public void ReturnRentedAirplane(Airplane airplane)
+        {
+            Airplanes.Remove(airplane);
+        }
+
     }
 
 }
