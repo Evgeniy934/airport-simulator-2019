@@ -27,7 +27,7 @@ namespace airport_simulator_2019.GameObjects
         {
             get
             {
-                return RentDays == 1;
+                return RentDays == 0;
             }
         }
 

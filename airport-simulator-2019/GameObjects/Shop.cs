@@ -49,10 +49,9 @@ namespace airport_simulator_2019.GameObjects
                 if (airplane.RentEnd != null)
                 {
                     int payment = airplane.PriceRent;
-                    Game.Player.Pay(payment);
 
                     airplane.RentDays -= 1;
-                    if (airplane.RentDays == 0)
+                    if (airplane.RentDays == -1)
                     {
                         if (airplane.InFly)
                         {
@@ -65,6 +64,10 @@ namespace airport_simulator_2019.GameObjects
                             airplane.RentDays = -1;
                             Game.Player.ReturnRentedAirplane(airplane);
                         }
+                    }
+                    else
+                    {
+                        Game.Player.Pay(payment);
                     }
                 }
             }
