@@ -44,18 +44,25 @@ namespace airport_simulator_2019.GameObjects
         }
         public override void DayBegin()
         {
-            foreach (var item in _airplanes)
+            foreach (var airplane in _airplanes)
             {
-                if (item.RentEnd != null)
+                if (airplane.RentEnd != null)
                 {
-                    int payment = item.PriceRent;
+                    int payment = airplane.PriceRent;
                     Game.Player.Pay(payment);
 
-                    item.RentDays -= 1;
-                    if (item.RentDays == 0)
+                    airplane.RentDays -= 1;
+                    if (airplane.RentDays == 0)
                     {
-                        item.RentEnd = null;
-                        Game.Player.ReturnRentedAirplane(item);
+                        if (airplane.InFly)
+                        {
+                            airplane.RentDays += 1;
+                        }
+                        else
+                        {
+                            airplane.RentEnd = null;
+                            Game.Player.ReturnRentedAirplane(airplane);
+                        }
                     }
                 }
             }
