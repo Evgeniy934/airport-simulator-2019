@@ -20,7 +20,6 @@ namespace airport_simulator_2019
             DateComboBox.SelectedDate = now;
             HoursText.Text = now.Hour.ToString();
             MinutesText.Text = now.Minute.ToString();
-
         }
 
         private void Transfer_Click(object sender, RoutedEventArgs e)

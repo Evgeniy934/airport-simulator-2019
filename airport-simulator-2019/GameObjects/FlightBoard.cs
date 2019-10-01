@@ -1,15 +1,17 @@
 ﻿using airport_simulator_2019.Engine;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace airport_simulator_2019.GameObjects
 {
     public class FlightBoard : GameObject
     {
-        public List<Flight> Flights { get; private set; }
+        public ObservableCollection<Flight> Flights { get; private set; }
 
         public FlightBoard()
         {
-            Flights = GenerateFlights();
+            Flights = new ObservableCollection<Flight>(GenerateFlights());
         }
 
         public Flight TakeFlight(Flight flight)
@@ -20,8 +22,20 @@ namespace airport_simulator_2019.GameObjects
 
         public override void OnDayBegin()
         {
-            Flights.RemoveAll(x => Game.Time.DayOfYear >= x.ExpireDate.DayOfYear);
-            Flights.AddRange(GenerateFlights());
+            for (int i = Flights.Count - 1; i >= 0; i--)
+            {
+                Flight flight = Flights[i];
+                if (Game.Time.DayOfYear >= flight.ExpireDate.DayOfYear)
+                {
+                    Flights.RemoveAt(i);
+                }
+            }
+
+            var flights = GenerateFlights();
+            foreach (var item in flights)
+            {
+                Flights.Add(item);
+            }
         }
 
         private List<Flight> GenerateFlights()

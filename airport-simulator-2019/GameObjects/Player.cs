@@ -1,6 +1,7 @@
 ﻿using airport_simulator_2019.Engine;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +10,16 @@ namespace airport_simulator_2019.GameObjects
 {
     public class Player : GameObject
     {
-        public List<Airplane> Airplanes { get; }
-        public List<Flight> Flights { get; }
+        public ObservableCollection<Airplane> Airplanes { get; }
+        public ObservableCollection<Flight> Flights { get; }
         public int Balance { get; private set; }
         public City HomeCity { get; private set; }
         public Schedule Schedule { get; private set; }
 
         public Player()
         {
-            Airplanes = new List<Airplane>();
-            Flights = new List<Flight>();
+            Airplanes = new ObservableCollection<Airplane>();
+            Flights = new ObservableCollection<Flight>();
             Schedule = new Schedule();
             Balance = 100000000;
             HomeCity = CityCatalog.Cities.Find(x => x.Name == "Пермь");
@@ -41,7 +42,7 @@ namespace airport_simulator_2019.GameObjects
 
         public void BuyAirplane(Airplane airplane)
         {
-            int price = Game.Shop.Airplanes.Find(x => x == airplane).PriceBuy;
+            int price = airplane.PriceBuy;
             if (Balance >= price)
             {
                 Airplane plane = Game.Shop.Buy(airplane);
@@ -52,20 +53,18 @@ namespace airport_simulator_2019.GameObjects
 
         public void SaleAirplane(Airplane airplane)
         {
-            int rent = airplane.RentDays;
-            if (rent == -1)
+            if (!airplane.InRent)
             {
                 Airplane plane = Game.Shop.Sale(airplane);
                 Airplanes.Remove(plane);
                 int priceSale = airplane.PriceSale;
                 Balance += priceSale;
             }
-            
         }
 
         public void RentAirplane(Airplane airplane, DateTime dateEnd)
         {
-            int price = Game.Shop.Airplanes.Find(x => x == airplane).PriceRent;
+            int price = airplane.PriceRent;
             if (Balance >= price)
             {
                 Airplane plane = Game.Shop.Rent(airplane, dateEnd);
@@ -74,15 +73,16 @@ namespace airport_simulator_2019.GameObjects
             }
         }
 
+        public void ReturnRentedAirplane(Airplane airplane)
+        {
+            Airplanes.Remove(airplane);
+            Game.Shop.ReturnRent(airplane);
+        }
+
         public void TakeFromFlightBoard(Flight flight)
         {
             Flight taken = Game.FlightBoard.TakeFlight(flight);
             Flights.Add(taken);
-        }
-
-        public void ReturnRentedAirplane(Airplane airplane)
-        {
-            Airplanes.Remove(airplane);
         }
 
         public void ScheduleFlight(Flight flight, Airplane airplane, DateTime time)
@@ -101,6 +101,23 @@ namespace airport_simulator_2019.GameObjects
             ScheduleFlight(flight, airplane, time);
         }
 
+        public override void OnDayBegin()
+        {
+            for (int i = Airplanes.Count - 1; i >= 0; i--)
+            {
+                Airplane airplane = Airplanes[i];
+                if (airplane.InRent)
+                {
+                    if (Game.Time > airplane.RentEnd)
+                    {
+                        if (!airplane.InFly)
+                        {
+                            ReturnRentedAirplane(airplane);
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

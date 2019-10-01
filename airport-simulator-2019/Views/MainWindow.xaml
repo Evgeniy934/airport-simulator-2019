@@ -38,7 +38,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="ScheduleGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
+                    <DataGrid Name="ScheduleGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
@@ -73,7 +73,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="MyFlighsGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
+                    <DataGrid Name="MyFlighsGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
@@ -103,7 +103,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="FlightBoardGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
+                    <DataGrid Name="FlightBoardGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
@@ -137,7 +137,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="MyAirplanesGrid" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,20" Grid.RowSpan="2" IsReadOnly="True"  SelectionMode="Single">
+                    <DataGrid Name="MyAirplanesGrid" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,20" Grid.RowSpan="2" IsReadOnly="True"  SelectionMode="Single" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
                             <DataGridTextColumn Header="Кол-во пассажирских мест" Binding="{Binding QuantitySeat}"  />

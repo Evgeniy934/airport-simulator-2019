@@ -125,13 +125,6 @@ namespace airport_simulator_2019.GameObjects
                 Latitude = 22.2855200,
                 Longitude = 114.1576900
             });
-            Cities.Add(new City
-            {
-                Name = "Сидней",
-                Latitude = 48.472584,
-                Longitude = 135.057732
-            });
-
         }
     }
 }

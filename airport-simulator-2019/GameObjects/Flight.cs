@@ -13,7 +13,7 @@ namespace airport_simulator_2019.GameObjects
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
         public Airplane Airplane { get; set; }
-        public bool InFly => Airplane.InFly;
+        public bool InFly => Airplane?.InFly == true;
         
         public Flight()
         {

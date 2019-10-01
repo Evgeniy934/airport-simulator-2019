@@ -1,17 +1,19 @@
 ﻿using airport_simulator_2019.Engine;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace airport_simulator_2019.GameObjects
 {
     public class Schedule : GameObject
     {
+        public ObservableCollection<Flight> Flights { get; private set; }
+
         public Schedule()
         {
-            Flights = new List<Flight>();
+            Flights = new ObservableCollection<Flight>();
         }
-
-        public List<Flight> Flights { get; private set; }
 
         public void Add(Flight flight, Airplane airplane, DateTime time)
         {
@@ -23,16 +25,17 @@ namespace airport_simulator_2019.GameObjects
         }
 
         public void CompleteFlight(Airplane airplane)
-        {
-            Flight flight = Flights.Find(x => x.Airplane == airplane);
+        {            
+            Flight flight = Flights.First(x => x.Airplane == airplane);
             Game.Player.Pay(flight.PriceFlight);
             Flights.Remove(flight);
         }
 
         public override void OnSecond()
         {
-            foreach (Flight flight in Flights)
+            for (int i = Flights.Count - 1; i >= 0; i--)
             {
+                Flight flight = Flights[i];
                 if (!flight.InFly)
                 {
                     if (flight.Airplane.Location == flight.DepartureCity)

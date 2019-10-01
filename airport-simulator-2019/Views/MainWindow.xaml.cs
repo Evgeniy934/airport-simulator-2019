@@ -26,6 +26,12 @@ namespace airport_simulator_2019
             _game.Tick = OnTick;
             _game.DayBegin = OnDayBegin;
 
+            MyAirplanesGrid.ItemsSource = _game.Player.Airplanes;
+            ShopDataGrid.ItemsSource = _game.Shop.Airplanes;
+            FlightBoardGrid.ItemsSource = _game.FlightBoard.Flights;
+            MyFlighsGrid.ItemsSource = _game.Player.Flights;
+            ScheduleGrid.ItemsSource = _game.Player.Schedule.Flights;
+
             UpdateUI();
         }
 
@@ -81,8 +87,10 @@ namespace airport_simulator_2019
             if (airplane == null)
             {
                 MessageBox.Show("Выберете самолет!");
-            } else
-            { if (airplane.RentDays != -1)
+            }
+            else
+            {
+                if (airplane.InRent)
                 {
                     MessageBox.Show("Нельзя продать арендованный самолет!");
                 }
@@ -208,54 +216,21 @@ namespace airport_simulator_2019
             }
         }
 
-        private void UpdateUI()
-        {
-            //ShopDataGrid.ItemsSource = null;
-            //ShopDataGrid.ItemsSource = _game.Shop.Airplanes;
-
-            //ShopDataGrid.Items.Refresh();
-            //ShopDataGrid.Items.Clear();
-            //foreach (var item in _game.Shop.Airplanes)
-            //{
-            //    ShopDataGrid.Items.Add(item);
-            //}
-
-            UpdateGrid(ShopDataGrid, _game.Shop.Airplanes);
-            UpdateGrid(MyAirplanesGrid, _game.Player.Airplanes);
-            UpdateGrid(FlightBoardGrid, _game.FlightBoard.Flights);
-            UpdateGrid(MyFlighsGrid, _game.Player.Flights);
-            UpdateGrid(ScheduleGrid, _game.Player.Schedule.Flights);            
-
-            Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
-
-        }
-
-        void UpdateGrid(DataGrid grid, IEnumerable collection)
-        {
-            int i = grid.SelectedIndex;
-            grid.Items.Clear();
-            foreach (var item in collection)
-            {
-                grid.Items.Add(item);
-            }
-
-            grid.SelectedIndex = i;
-        }
-
         private void OnTick()
         {
-            UpdateTime();
             UpdateUI();
+            MyAirplanesGrid.Items.Refresh();
+            ShopDataGrid.Items.Refresh();
+        }
+
+        private void UpdateUI()
+        {
+            Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
+            CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
         }
 
         private void OnDayBegin()
         {
-            UpdateUI();
-        }
-
-        private void UpdateTime()
-        {
-            CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
         }
     }
 }

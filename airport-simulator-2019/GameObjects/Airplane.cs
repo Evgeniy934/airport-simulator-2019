@@ -14,7 +14,7 @@ namespace airport_simulator_2019.GameObjects
         public int QuantitySeat { get; set; } // кол-во мест
         public int Fuel { get; set; } // расход топлива
         public int PriceRent { get; set; } // цена аренды за 1 день
-        public int RentDays { get; set; } // срок владения (аренды) в днях
+        //public int RentDays { get; set; } // срок владения (аренды) в днях
         public City Location { get; set; }  //местоположение
         public City FlyingTo { get; private set; }
         public DateTime ArrivalTime { get; private set; }
@@ -26,18 +26,10 @@ namespace airport_simulator_2019.GameObjects
         public int PriceSale { get; set; } // цена продажи
 
         public DateTime? RentEnd { get; set; }
-
-        public bool ReturnTomorrow
-        {
-            get
-            {
-                return RentDays == 0;
-            }
-        }
+        public bool InRent => RentEnd != null;
 
         public Airplane()
         {
-            //Schedule = new List<Flight>();
         }
 
         public void FlyTo(City city)
