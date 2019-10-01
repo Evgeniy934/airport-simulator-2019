@@ -27,7 +27,10 @@ namespace airport_simulator_2019.GameObjects
 
         public DateTime? RentEnd { get; set; }
         public bool InRent => RentEnd != null;
-
+        public bool ReturnTomorrow =>
+            InRent ? (Game.Time.DayOfYear + 1) == RentEnd.Value.DayOfYear
+            : false;
+        
         public Airplane()
         {
         }
