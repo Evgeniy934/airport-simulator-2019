@@ -23,9 +23,6 @@ namespace airport_simulator_2019.GameObjects
             Schedule = new Schedule();
             Balance = 100000000;
             HomeCity = CityCatalog.Cities.Find(x => x.Name == "Пермь");
-
-            Flights.Add(Game.FlightBoard.GenerateFlight());
-            BuyAirplane(Shop.Airplanes.First());
         }
 
         public void Spent(int howMuch)
