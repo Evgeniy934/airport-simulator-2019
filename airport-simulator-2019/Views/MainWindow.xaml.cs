@@ -84,27 +84,29 @@ namespace airport_simulator_2019
         private void SellAirplane_Click(object sender, RoutedEventArgs e)
         {
             Airplane airplane = (Airplane)MyAirplanesGrid.SelectedItem;
+
             if (airplane == null)
             {
                 MessageBox.Show("Выберете самолет!");
+                return;
             }
-            else
+            if (airplane.InRent)
             {
-                if (airplane.InRent)
-                {
-                    MessageBox.Show("Нельзя продать арендованный самолет!");
-                }
-                else
-                {
-                    switch (MessageBox.Show("Вы уверены, что хотите продать этот самолет?", "Подтверждение продажи", MessageBoxButton.YesNo))
-                    {
-                        case MessageBoxResult.Yes:
-                            _game.Player.SaleAirplane(airplane);
-                            UpdateUI();
-                            break;
+                MessageBox.Show("Нельзя продать арендованный самолет!");
+                return;
+            }
+            if (airplane.InFly)
+            {
+                MessageBox.Show("Нельзя продать летящий самолет!");
+                return;
+            }
 
-                    }
-                }
+            switch (MessageBox.Show("Вы уверены, что хотите продать этот самолет?", "Подтверждение продажи", MessageBoxButton.YesNo))
+            {
+                case MessageBoxResult.Yes:
+                    _game.Player.SaleAirplane(airplane);
+                    UpdateUI();
+                    break;
             }
         }
 
@@ -146,7 +148,7 @@ namespace airport_simulator_2019
         private void AddToSchedule_Click(object sender, RoutedEventArgs e)
         {
             Flight flight = (Flight)MyFlighsGrid.SelectedItem;
-            if (flight != null)
+            if (flight != null && !flight.InFly)
             {
                 _game.Pause();
 
