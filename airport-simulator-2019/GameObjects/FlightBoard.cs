@@ -1,4 +1,5 @@
 ﻿using airport_simulator_2019.Engine;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,6 +8,8 @@ namespace airport_simulator_2019.GameObjects
 {
     public class FlightBoard : GameObject
     {
+        private static Random _random = new Random();
+
         public ObservableCollection<Flight> Flights { get; private set; }
 
         public FlightBoard()
@@ -55,9 +58,15 @@ namespace airport_simulator_2019.GameObjects
             {
                 DepartureCity = cityPair.Item1,
                 ArrivalCity = cityPair.Item2,
-                PriceFlight = 100000,
-                ExpireDate = Game.Time.AddDays(2),
+                Forfeit = RoundOff(_random.Next(10000, 50000), 10000),
+                PriceFlight = RoundOff(_random.Next(1000, 10000), 1000),
+                ExpireDate = Game.Time.AddDays(_random.Next(1, 7)),
             };
+        }
+
+        private static int RoundOff(int i, int interval)
+        {
+            return ((int)Math.Round(i / (double) interval)) * interval;
         }
     }
 }

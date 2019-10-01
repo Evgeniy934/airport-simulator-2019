@@ -24,10 +24,8 @@ namespace airport_simulator_2019.GameObjects
             Flights.Add(flight);
         }
 
-        public void CompleteFlight(Airplane airplane)
-        {            
-            Flight flight = Flights.First(x => x.Airplane == airplane);
-            Game.Player.Pay(flight.PriceFlight);
+        public void CompleteFlight(Flight flight)
+        {
             Flights.Remove(flight);
         }
 

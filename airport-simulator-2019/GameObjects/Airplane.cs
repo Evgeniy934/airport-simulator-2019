@@ -59,7 +59,7 @@ namespace airport_simulator_2019.GameObjects
                     // flight end
                     Location = FlyingTo;
                     FlyingTo = null;
-                    Game.Player.Schedule.CompleteFlight(this);
+                    Game.Player.CompleteFlight(this);
                 }
             }
         }

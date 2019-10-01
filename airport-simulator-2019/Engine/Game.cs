@@ -53,8 +53,6 @@ namespace airport_simulator_2019.Engine
             _timer.Tick += new EventHandler(OnTick);
             _timer.Interval = new TimeSpan(0, 0, 1);
             _timer.Start();
-
-            Player.BuyAirplane(Shop.Airplanes.First());
         }
 
         public void RegisterObject(GameObject gameObject)

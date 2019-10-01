@@ -83,9 +83,9 @@
                             <DataGridTextColumn Header="Частота" />
                             <DataGridTextColumn Header="Необходимая грузоподъемность" />
                             <DataGridTextColumn Header="Оплата за одного пассажира" />
-                            <DataGridTextColumn Header="Оплата за рейс" />
+                            <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
                             <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
-                            <DataGridTextColumn Header="Сумма неустойки" />
+                            <DataGridTextColumn Binding="{Binding Forfeit}" Header="Сумма неустойки" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -114,9 +114,9 @@
                             <DataGridTextColumn Header="Частота" />
                             <DataGridTextColumn Header="Необходимая грузоподъемность" />
                             <DataGridTextColumn Header="Оплата за одного пассажира" />
-                            <DataGridTextColumn Header="Оплата за рейс" />
+                            <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
                             <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
-                            <DataGridTextColumn Header="Сумма неустойки" />
+                            <DataGridTextColumn Binding="{Binding Forfeit}" Header="Сумма неустойки" />
                         </DataGrid.Columns>
                     </DataGrid>
 

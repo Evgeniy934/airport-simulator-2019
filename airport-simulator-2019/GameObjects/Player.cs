@@ -25,6 +25,7 @@ namespace airport_simulator_2019.GameObjects
             HomeCity = CityCatalog.Cities.Find(x => x.Name == "Пермь");
 
             Flights.Add(Game.FlightBoard.GenerateFlight());
+            BuyAirplane(Shop.Airplanes.First());
         }
 
         public void Spent(int howMuch)
@@ -101,6 +102,14 @@ namespace airport_simulator_2019.GameObjects
             ScheduleFlight(flight, airplane, time);
         }
 
+        public void CompleteFlight(Airplane airplane)
+        {
+            Flight flight = Flights.First(x => x.Airplane == airplane);
+            Pay(flight.PriceFlight);
+            Schedule.CompleteFlight(flight);
+            Flights.Remove(flight);
+        }
+
         public override void OnDayBegin()
         {
             for (int i = Airplanes.Count - 1; i >= 0; i--)
@@ -122,6 +131,7 @@ namespace airport_simulator_2019.GameObjects
                 Flight flight = Flights[i];
                 if (Game.Time > flight.ExpireDate)
                 {
+                    Spent(flight.Forfeit);
                     Flights.Remove(flight);
                 }
             }
