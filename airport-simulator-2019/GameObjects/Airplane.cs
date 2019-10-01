@@ -38,6 +38,12 @@ namespace airport_simulator_2019.GameObjects
             ArrivalTime = Game.Time + GetFlyDuration(Location, city);
         }
 
+        public bool IsAvailableForFlight(Flight flight)
+        {
+            // TODO: check more
+            return Location == flight.DepartureCity;
+        }
+
         public TimeSpan GetFlyDuration(City a, City b)
         {
             int distance = CityCatalog.GetDistance(a, b);

@@ -219,12 +219,16 @@ namespace airport_simulator_2019
         private void OnTick()
         {
             UpdateUI();
-            MyAirplanesGrid.Items.Refresh();
-            ShopDataGrid.Items.Refresh();
         }
 
         private void UpdateUI()
         {
+            MyAirplanesGrid.Items.Refresh();
+            ShopDataGrid.Items.Refresh();
+            FlightBoardGrid.Items.Refresh();
+            MyFlighsGrid.Items.Refresh();
+            ScheduleGrid.Items.Refresh();
+
             Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
             CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
         }

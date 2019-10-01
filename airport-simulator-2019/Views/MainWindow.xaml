@@ -108,6 +108,7 @@
                             <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
                             <DataGridTextColumn Binding="{Binding Distance}" Header="Расстояние" />
+                            <DataGridTextColumn Binding="{Binding PlayerHasSuitableAirplane}" Header="Можно брать!" />
                             <DataGridTextColumn Header="Вид" />
                             <DataGridTextColumn Header="Тип" />
                             <DataGridTextColumn Header="Частота" />
