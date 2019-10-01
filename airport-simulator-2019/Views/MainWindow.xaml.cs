@@ -1,8 +1,10 @@
 ﻿using airport_simulator_2019.Engine;
 using airport_simulator_2019.GameObjects;
 using System;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -103,6 +105,8 @@ namespace airport_simulator_2019
             Airplane airplane = (Airplane)ShopDataGrid.SelectedItem;
             if (airplane != null)
             {
+                _game.Pause();
+
                 var dialog = new RentAirplaneDialog();
                 if ((bool)dialog.ShowDialog())
                 {
@@ -111,9 +115,9 @@ namespace airport_simulator_2019
                     {
                         _game.Player.RentAirplane(airplane, dateEnd.Value);
                         UpdateUI();
-                        MessageBox.Show("Успех");
                     }
                 }
+                _game.Unpause();
             }
         }
 
@@ -127,7 +131,6 @@ namespace airport_simulator_2019
                     case MessageBoxResult.Yes:
                         _game.Player.TakeFromFlightBoard(flight);
                         UpdateUI();
-                        MessageBox.Show("Успех");
                         break;
                 }
             }
@@ -135,10 +138,28 @@ namespace airport_simulator_2019
 
         private void AddToSchedule_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddToScheduleDialog();
-            if ((bool)dialog.ShowDialog())
+            Flight flight = (Flight)MyFlighsGrid.SelectedItem;
+            if (flight != null)
             {
-                MessageBox.Show("Успех");
+                _game.Pause();
+
+                var dialog = new AddToScheduleDialog(_game.Player.Airplanes);
+                if ((bool)dialog.ShowDialog())
+                {
+                    DateTime? date = dialog.DateComboBox.SelectedDate;
+                    Airplane airplane = (Airplane) dialog.AirplaneComboBox.SelectedItem;
+                    if (date.HasValue && airplane != null)
+                    {
+                        var hours = int.Parse(dialog.HoursText.Text);
+                        var minutes = int.Parse(dialog.MinutesText.Text);
+                        date += new TimeSpan(hours, minutes, 0);
+
+                        _game.Player.ScheduleFlight(flight, airplane, date.Value);
+
+                        UpdateUI();
+                    }
+                }
+                _game.Unpause();
             }
         }
 
@@ -147,7 +168,6 @@ namespace airport_simulator_2019
             switch (MessageBox.Show("Вы уверены, что хотите удалить этот рейс из расписания?", "Подтверждение удаления рейса", MessageBoxButton.YesNo))
             {
                 case MessageBoxResult.Yes:
-                    MessageBox.Show("Успех");
                     break;
             }
         }
@@ -157,53 +177,76 @@ namespace airport_simulator_2019
             switch (MessageBox.Show("Вы уверены, что хотите отказаться от этого рейса?", "Подтверждение отказа от рейса", MessageBoxButton.YesNo))
             {
                 case MessageBoxResult.Yes:
-                    MessageBox.Show("Успех");
                     break;
             }
         }
 
         private void TransferAirplane_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new TransferAirplaneDialog();
-            if ((bool)dialog.ShowDialog())
+            Airplane airplane = (Airplane)MyAirplanesGrid.SelectedItem;
+            if (airplane != null)
             {
-                MessageBox.Show("Успех");
+                _game.Pause();
+
+                var dialog = new TransferAirplaneDialog(
+                    CityCatalog.Cities.Where(x => x != _game.Player.HomeCity));
+                if ((bool)dialog.ShowDialog())
+                {
+                    City city = (City) dialog.CitiesComboBox.SelectedItem;
+                    DateTime? date = dialog.DateComboBox.SelectedDate;
+                    if (city != null && date.HasValue)
+                    {
+                        var hours = int.Parse(dialog.HoursText.Text);
+                        var minutes = int.Parse(dialog.MinutesText.Text);
+                        date += new TimeSpan(hours, minutes, 0);
+
+                        _game.Player.TransferAirplane(airplane, city, date.Value);
+
+                        UpdateUI();
+                    }
+                }
+                _game.Unpause();
             }
         }
 
         private void UpdateUI()
         {
-            ShopDataGrid.Items.Clear();
-            foreach (var item in _game.Shop.Airplanes)
-            {
-                ShopDataGrid.Items.Add(item);
-            }
+            //ShopDataGrid.ItemsSource = null;
+            //ShopDataGrid.ItemsSource = _game.Shop.Airplanes;
 
-            MyAirplanesGrid.Items.Clear();
-            foreach (var item in _game.Player.Airplanes)
-            {
-                MyAirplanesGrid.Items.Add(item);
-            }
+            //ShopDataGrid.Items.Refresh();
+            //ShopDataGrid.Items.Clear();
+            //foreach (var item in _game.Shop.Airplanes)
+            //{
+            //    ShopDataGrid.Items.Add(item);
+            //}
 
-            FlightBoardGrid.Items.Clear();
-            foreach (var item in _game.FlightBoard.Flights)
-            {
-                FlightBoardGrid.Items.Add(item);
-            }
-
-            MyFlighsGrid.Items.Clear();
-            foreach (var item in _game.Player.Flights)
-            {
-                MyFlighsGrid.Items.Add(item);
-            }
+            UpdateGrid(ShopDataGrid, _game.Shop.Airplanes);
+            UpdateGrid(MyAirplanesGrid, _game.Player.Airplanes);
+            UpdateGrid(FlightBoardGrid, _game.FlightBoard.Flights);
+            UpdateGrid(MyFlighsGrid, _game.Player.Flights);
+            UpdateGrid(ScheduleGrid, _game.Player.Schedule.Flights);            
 
             Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
 
         }
 
+        void UpdateGrid(DataGrid grid, IEnumerable collection)
+        {
+            int i = grid.SelectedIndex;
+            grid.Items.Clear();
+            foreach (var item in collection)
+            {
+                grid.Items.Add(item);
+            }
+
+            grid.SelectedIndex = i;
+        }
+
         private void OnTick()
         {
             UpdateTime();
+            UpdateUI();
         }
 
         private void OnDayBegin()

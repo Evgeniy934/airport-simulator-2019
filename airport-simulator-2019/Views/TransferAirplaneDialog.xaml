@@ -28,21 +28,21 @@
 
         <WrapPanel Grid.Row="0">
             <TextBlock Text="Город назначения:" />
-            <ComboBox>
+            <ComboBox Name="CitiesComboBox" DisplayMemberPath="Name">
 
             </ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="1">
             <TextBlock Text="Дата вылета:" />
-            <DatePicker />
+            <DatePicker Name="DateComboBox"/>
         </WrapPanel>
 
         <WrapPanel Grid.Row="2">
             <TextBlock Text="Время вылета:" />
-            <TextBox Width="20"/>
+            <TextBox Name="HoursText" Width="20"/>
             <TextBlock Text=":" />
-            <TextBox Width="20"/>
+            <TextBox Name="MinutesText" Width="20"/>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Right">

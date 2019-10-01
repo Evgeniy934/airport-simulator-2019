@@ -1,5 +1,7 @@
 ﻿using airport_simulator_2019.Engine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace airport_simulator_2019.GameObjects
 {
@@ -14,7 +16,9 @@ namespace airport_simulator_2019.GameObjects
         public int PriceRent { get; set; } // цена аренды за 1 день
         public int RentDays { get; set; } // срок владения (аренды) в днях
         public City Location { get; set; }  //местоположение
-        public bool InFly { get; set; } // находится ли самолет в полете
+        public City FlyingTo { get; private set; }
+        public DateTime ArrivalTime { get; private set; }
+        public bool InFly => FlyingTo != null;
                                         
         ///
 
@@ -24,6 +28,37 @@ namespace airport_simulator_2019.GameObjects
         public DateTime? RentEnd { get; set; }
 
         public Airplane()
+        {
+            //Schedule = new List<Flight>();
+        }
+
+        public void FlyTo(City city)
+        {
+            FlyingTo = city;
+            ArrivalTime = Game.Time + GetFlyDuration(Location, city);
+        }
+
+        public TimeSpan GetFlyDuration(City a, City b)
+        {
+            int distance = CityCatalog.GetDistance(a, b);
+            return TimeSpan.FromHours(distance / Speed);
+        }
+
+        public override void OnSecond()
+        {
+            if (InFly)
+            {
+                if (Game.Time >= ArrivalTime)
+                {
+                    // flight end
+                    Location = FlyingTo;
+                    FlyingTo = null;
+                    Game.Player.Schedule.CompleteFlight(this);
+                }
+            }
+        }
+
+        public override void OnDayBegin()
         {
         }
     }

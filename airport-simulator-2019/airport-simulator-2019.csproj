@@ -63,7 +63,7 @@
     <Compile Include="GameObjects\CityCatalog.cs" />
     <Compile Include="GameObjects\Flight.cs" />
     <Compile Include="GameObjects\FlightBoard.cs" />
-    <Compile Include="GameObjects\FlightDirection.cs" />
+    <Compile Include="GameObjects\Schedule.cs" />
     <Compile Include="Views\AddToScheduleDialog.xaml.cs">
       <DependentUpon>AddToScheduleDialog.xaml</DependentUpon>
     </Compile>

@@ -38,24 +38,24 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
+                    <DataGrid Name="ScheduleGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Город отправления" />
-                            <DataGridTextColumn Header="Город назначения" />
-                            <DataGridTextColumn Header="Расстояние" />
+                            <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
+                            <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
+                            <DataGridTextColumn Binding="{Binding Distance}" Header="Расстояние" />
                             <DataGridTextColumn Header="Вид" />
                             <DataGridTextColumn Header="Тип" />
                             <DataGridTextColumn Header="Необходимая грузоподъемность" />
                             <DataGridTextColumn Header="Оплата за одного пассажира" />
-                            <DataGridTextColumn Header="Оплата за рейс" />
+                            <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
                             <DataGridTextColumn Header="Название" />
                             <DataGridTextColumn Header="Кол-во пассажирских мест" />
                             <DataGridTextColumn Header="Скорость" />
                             <DataGridTextColumn Header="Расход топлива" />
-                            <DataGridTextColumn Header="Дата и время вылета" />
+                            <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:G}}" Header="Дата и время вылета" />
                             <DataGridTextColumn Header="Направление" />
                             <DataGridTextColumn Header="Время в пути" />
-                            <DataGridTextColumn Header="Дата и время прилета" />
+                            <DataGridTextColumn Binding="{Binding ArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:MM}}" Header="Дата и время прилета" />
                             <DataGridTextColumn Header="Расход" />
                         </DataGrid.Columns>
                     </DataGrid>
@@ -75,9 +75,9 @@
 
                     <DataGrid Name="MyFlighsGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
-                            <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
-                            <DataGridTextColumn Header="Расстояние" />
+                            <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
+                            <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
+                            <DataGridTextColumn Binding="{Binding Distance}" Header="Расстояние" />
                             <DataGridTextColumn Header="Вид" />
                             <DataGridTextColumn Header="Тип" />
                             <DataGridTextColumn Header="Частота" />
@@ -105,9 +105,9 @@
 
                     <DataGrid Name="FlightBoardGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Direction.Departure.Name}" Header="Город отправления" />
-                            <DataGridTextColumn Binding="{Binding Direction.Arrival.Name}" Header="Город назначения" />
-                            <DataGridTextColumn Binding="{Binding Direction.Distance}" Header="Расстояние" />
+                            <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
+                            <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
+                            <DataGridTextColumn Binding="{Binding Distance}" Header="Расстояние" />
                             <DataGridTextColumn Header="Вид" />
                             <DataGridTextColumn Header="Тип" />
                             <DataGridTextColumn Header="Частота" />

@@ -18,7 +18,7 @@ namespace airport_simulator_2019.GameObjects
             return flight;
         }
 
-        public override void DayBegin()
+        public override void OnDayBegin()
         {
             Flights.RemoveAll(x => Game.Time.DayOfYear >= x.ExpireDate.DayOfYear);
             Flights.AddRange(GenerateFlights());
@@ -27,23 +27,23 @@ namespace airport_simulator_2019.GameObjects
         private List<Flight> GenerateFlights()
         {
             var flights = new List<Flight>();
-
-            flights.Add(
-                new Flight
-                {
-                    Direction = CityCatalog.GetFlightDirection(),
-                    PriceFlight = 100000,
-                    ExpireDate = Game.Time.AddDays(2)
-                });
-            flights.Add(
-                new Flight
-                {
-                    Direction = CityCatalog.GetFlightDirection(),
-                    PriceFlight = 500000,
-                    ExpireDate = Game.Time.AddDays(2)
-                });
-
+            
+            flights.Add(GenerateFlight());
+            flights.Add(GenerateFlight());
+            
             return flights;
+        }
+
+        public Flight GenerateFlight()
+        {
+            (City, City) cityPair = CityCatalog.GetRandomCityPair();          
+            return new Flight
+            {
+                DepartureCity = cityPair.Item1,
+                ArrivalCity = cityPair.Item2,
+                PriceFlight = 100000,
+                ExpireDate = Game.Time.AddDays(2),
+            };
         }
     }
 }

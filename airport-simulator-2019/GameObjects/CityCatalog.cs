@@ -9,23 +9,17 @@ namespace airport_simulator_2019.GameObjects
         static Random _random = new Random();
 
         public static List<City> Cities { get; private set; }
-
-        public static FlightDirection GetFlightDirection()
+        
+        public static (City, City) GetRandomCityPair()
         {
-            var direction = new FlightDirection();
-
-            direction.Departure = GetRandomCity();
+            City cityOne = GetRandomCity();
+            City cityTwo;
             do
             {
-                direction.Arrival = GetRandomCity();
-            } while (direction.Departure == direction.Arrival);
+                cityTwo = GetRandomCity();
+            } while (cityOne == cityTwo);
 
-            var departureCoordinate = new GeoCoordinate(direction.Departure.Latitude, direction.Departure.Longitude);
-            var arrivalCoordinate = new GeoCoordinate(direction.Arrival.Latitude, direction.Arrival.Longitude);
-
-            direction.Distance = (int) departureCoordinate.GetDistanceTo(arrivalCoordinate) / 1000;
-
-            return direction;
+            return (cityOne, cityTwo);
         }
 
         public static City GetRandomCity()
@@ -33,9 +27,22 @@ namespace airport_simulator_2019.GameObjects
             return Cities[_random.Next(Cities.Count)];
         }
 
+        public static int GetDistance(City a, City b)
+        {
+            var ca = new GeoCoordinate(a.Latitude, a.Longitude);
+            var cb = new GeoCoordinate(b.Latitude, b.Longitude);
+            return (int)ca.GetDistanceTo(cb) / 1000;
+        }
+
         static CityCatalog()
         {
             Cities = new List<City>();
+            Cities.Add(new City
+            {
+                Name = "Лондон",
+                Latitude = 51.507351,
+                Longitude = -0.127758
+            });
             Cities.Add(new City
             {
                 Name = "Пермь",
@@ -47,12 +54,6 @@ namespace airport_simulator_2019.GameObjects
                 Name = "Липецк",
                 Latitude = 52.603241,
                 Longitude = 39.572941
-            });
-            Cities.Add(new City
-            {
-                Name = "Лондон",
-                Latitude = 51.507351,
-                Longitude = -0.127758
             });
             Cities.Add(new City
             {

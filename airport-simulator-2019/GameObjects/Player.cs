@@ -13,21 +13,30 @@ namespace airport_simulator_2019.GameObjects
         public List<Flight> Flights { get; }
         public int Balance { get; private set; }
         public City HomeCity { get; private set; }
+        public Schedule Schedule { get; private set; }
 
         public Player()
         {
             Airplanes = new List<Airplane>();
             Flights = new List<Flight>();
+            Schedule = new Schedule();
             Balance = 100000000;
             HomeCity = CityCatalog.Cities.Find(x => x.Name == "Пермь");
+
+            Flights.Add(Game.FlightBoard.GenerateFlight());
         }
 
-        public void Pay(int howMuch)
+        public void Spent(int howMuch)
         { 
             if (Balance >= howMuch)
             {
                 Balance -= howMuch;
             }
+        }
+
+        public void Pay(int howMuch)
+        {
+            Balance += howMuch;
         }
 
         public void BuyAirplane(Airplane airplane)
@@ -69,6 +78,22 @@ namespace airport_simulator_2019.GameObjects
         {
             Flight taken = Game.FlightBoard.TakeFlight(flight);
             Flights.Add(taken);
+        }
+
+        public void ScheduleFlight(Flight flight, Airplane airplane, DateTime time)
+        {
+            Schedule.Add(flight, airplane, time);
+        }
+
+        public void TransferAirplane(Airplane airplane, City destination, DateTime time)
+        {
+            var flight = new Flight
+            {
+                Airplane = airplane,
+                DepartureCity = airplane.Location,
+                ArrivalCity = destination
+            };
+            ScheduleFlight(flight, airplane, time);
         }
 
     }
