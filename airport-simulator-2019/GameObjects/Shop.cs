@@ -21,7 +21,7 @@ namespace airport_simulator_2019.GameObjects
         {
             _airplanes.Find(x => x == airplane).RentEnd = dateEnd;
             Airplane rent = _airplanes.Find(x => x == airplane);
-            rent.RentDays = (dateEnd - Game.Time).Days;
+            rent.RentDays = (dateEnd - Game.Time).Days + 1;
             return airplane;
         }
 
@@ -44,12 +44,31 @@ namespace airport_simulator_2019.GameObjects
         }
         public override void OnDayBegin()
         {
-            foreach (var item in _airplanes)
+            foreach (var airplane in _airplanes)
             {
-                if (item.RentEnd != null)
+                if (airplane.RentEnd != null)
                 {
-                    int payment = item.PriceRent;
-                    Game.Player.Spent(payment);
+                    int payment = airplane.PriceRent;
+
+                    airplane.RentDays -= 1;
+                    if (airplane.RentDays == -1)
+                    {
+                        if (airplane.InFly)
+                        {
+                            airplane.RentDays += 1;
+                            Game.Player.Spent(payment);
+                        }
+                        else
+                        {
+                            airplane.RentEnd = null;
+                            airplane.RentDays = -1;
+                            Game.Player.ReturnRentedAirplane(airplane);
+                        }
+                    }
+                    else
+                    {
+                        Game.Player.Spent(payment);
+                    }
                 }
             }
         }

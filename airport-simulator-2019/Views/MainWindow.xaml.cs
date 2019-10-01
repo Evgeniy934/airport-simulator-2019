@@ -106,8 +106,7 @@ namespace airport_simulator_2019
             if (airplane != null)
             {
                 _game.Pause();
-
-                var dialog = new RentAirplaneDialog();
+                var dialog = new RentAirplaneDialog(_game, airplane.PriceRent);
                 if ((bool)dialog.ShowDialog())
                 {
                     DateTime? dateEnd = dialog.RentDateSelect.SelectedDate;

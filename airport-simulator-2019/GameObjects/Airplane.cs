@@ -27,6 +27,14 @@ namespace airport_simulator_2019.GameObjects
 
         public DateTime? RentEnd { get; set; }
 
+        public bool ReturnTomorrow
+        {
+            get
+            {
+                return RentDays == 0;
+            }
+        }
+
         public Airplane()
         {
             //Schedule = new List<Flight>();
