@@ -91,6 +91,11 @@ namespace airport_simulator_2019.GameObjects
             Schedule.Add(flight, airplane, time);
         }
 
+        public void RemoveFromSchedule(Flight flight)
+        {
+            Schedule.Remove(flight);
+        }
+
         public void TransferAirplane(Airplane airplane, City destination, DateTime time)
         {
             var flight = new Flight

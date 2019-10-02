@@ -174,10 +174,15 @@ namespace airport_simulator_2019
 
         private void RemoveFromSchedule_Click(object sender, RoutedEventArgs e)
         {
-            switch (MessageBox.Show("Вы уверены, что хотите удалить этот рейс из расписания?", "Подтверждение удаления рейса", MessageBoxButton.YesNo))
+            Flight flight = (Flight)ScheduleGrid.SelectedItem;
+            if (flight != null && !flight.InFly)
             {
-                case MessageBoxResult.Yes:
-                    break;
+                switch (MessageBox.Show("Вы уверены, что хотите удалить этот рейс из расписания?", "Подтверждение удаления рейса", MessageBoxButton.YesNo))
+                {
+                    case MessageBoxResult.Yes:
+                        _game.Player.RemoveFromSchedule(flight);
+                        break;
+                }
             }
         }
 

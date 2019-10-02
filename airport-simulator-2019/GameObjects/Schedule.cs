@@ -24,6 +24,14 @@ namespace airport_simulator_2019.GameObjects
             Flights.Add(flight);
         }
 
+        public void Remove(Flight flight)
+        {
+            if (!flight.Airplane.InFly)
+            {
+                Flights.Remove(flight);
+            }
+        }
+
         public void CompleteFlight(Flight flight)
         {
             Flights.Remove(flight);
