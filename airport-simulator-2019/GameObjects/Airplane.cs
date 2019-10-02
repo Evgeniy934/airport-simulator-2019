@@ -79,6 +79,10 @@ namespace airport_simulator_2019.GameObjects
 
         public override void OnDayBegin()
         {
+            if (InRent)
+            {
+                RaisePropertyChanged();
+            }
         }
     }
 
