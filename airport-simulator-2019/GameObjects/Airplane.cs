@@ -15,7 +15,6 @@ namespace airport_simulator_2019.GameObjects
         public int QuantitySeat { get; set; } // кол-во мест
         public int Fuel { get; set; } // расход топлива
         public int PriceRent { get; set; } // цена аренды за 1 день
-        //public int RentDays { get; set; } // срок владения (аренды) в днях
         public City Location { get; set; }  //местоположение
         public City FlyingTo { get; private set; }
         public DateTime ArrivalTime { get; private set; }
@@ -32,6 +31,13 @@ namespace airport_simulator_2019.GameObjects
             InRent ? (Game.Time.DayOfYear + 1) == RentEnd.Value.DayOfYear
             : false;
 
+        public int RentDays
+        {
+            get
+            {
+                return InRent ? (RentEnd - Game.Time).GetValueOrDefault().Days + 1 : -1;
+            }
+        } // срок владения (аренды) в днях
 
         public Airplane()
         {
@@ -47,8 +53,7 @@ namespace airport_simulator_2019.GameObjects
 
         public bool IsAvailableForFlight(Flight flight)
         {
-            // TODO: check more
-            return Location == flight.DepartureCity;
+            return (DistanceFly >= flight.Distance) && (MaxLoad >= flight.RequiredLoad);
         }
 
         public TimeSpan GetFlyDuration(City a, City b)

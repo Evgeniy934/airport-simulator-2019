@@ -210,7 +210,7 @@
                             <DataGridTextColumn Header="Цена покупки" Binding="{Binding PriceBuy}"/>
                             <DataGridTextColumn Header="Цена продажи" Binding="{Binding PriceSale}"/>
                             <DataGridTextColumn Header="Цена аренды" Binding="{Binding PriceRent}" />
-                            <DataGridTextColumn Header="Срок владения" />
+                            <DataGridTextColumn Header="Срок владения" Binding="{Binding RentDays}" />
                             <DataGridTextColumn Header="Местоположение" Binding="{Binding Location.Name}" />
                             <DataGridTextColumn Header="В рейсе?" Binding="{Binding InFly}" />
                         </DataGrid.Columns>
