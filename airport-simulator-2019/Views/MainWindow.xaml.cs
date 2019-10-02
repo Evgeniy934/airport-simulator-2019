@@ -230,19 +230,19 @@ namespace airport_simulator_2019
 
         private void OnTick()
         {
-            UpdateUI();
+            Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
+            CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
         }
 
         private void OnFlightComplete()
         {
-            FlightBoardGrid.Items.Refresh();
-            MyFlighsGrid.Items.Refresh();
+            UpdateUI();
         }
 
         private void UpdateUI()
         {
-            Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
-            CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
+            FlightBoardGrid.Items.Refresh();
+            MyFlighsGrid.Items.Refresh();
         }
     }
 }
