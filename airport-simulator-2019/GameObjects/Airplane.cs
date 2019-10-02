@@ -1,6 +1,7 @@
 ﻿using airport_simulator_2019.Engine;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace airport_simulator_2019.GameObjects
@@ -30,15 +31,18 @@ namespace airport_simulator_2019.GameObjects
         public bool ReturnTomorrow =>
             InRent ? (Game.Time.DayOfYear + 1) == RentEnd.Value.DayOfYear
             : false;
-        
+
+
         public Airplane()
         {
         }
+
 
         public void FlyTo(City city)
         {
             FlyingTo = city;
             ArrivalTime = Game.Time + GetFlyDuration(Location, city);
+            RaisePropertyChanged();
         }
 
         public bool IsAvailableForFlight(Flight flight)
@@ -63,6 +67,7 @@ namespace airport_simulator_2019.GameObjects
                     Location = FlyingTo;
                     FlyingTo = null;
                     Game.Player.CompleteFlight(this);
+                    RaisePropertyChanged();
                 }
             }
         }

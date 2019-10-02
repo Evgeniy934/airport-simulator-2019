@@ -8,12 +8,12 @@ namespace airport_simulator_2019.GameObjects
 {
     public class Shop : GameObject
     {
-        public ObservableCollection<Airplane> Airplanes { get; set; }
+        public TrulyObservableCollection<Airplane> Airplanes { get; set; }
         private List<Airplane> _rent;
 
         public Shop()
         {
-            Airplanes = new ObservableCollection<Airplane>(GenerateAirplanes());
+            Airplanes = new TrulyObservableCollection<Airplane>(GenerateAirplanes());
             _rent = new List<Airplane>();
         }
 

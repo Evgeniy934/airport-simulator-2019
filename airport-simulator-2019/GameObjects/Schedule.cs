@@ -8,11 +8,11 @@ namespace airport_simulator_2019.GameObjects
 {
     public class Schedule : GameObject
     {
-        public ObservableCollection<Flight> Flights { get; private set; }
+        public TrulyObservableCollection<Flight> Flights { get; private set; }
 
         public Schedule()
         {
-            Flights = new ObservableCollection<Flight>();
+            Flights = new TrulyObservableCollection<Flight>();
         }
 
         public void Add(Flight flight, Airplane airplane, DateTime time)

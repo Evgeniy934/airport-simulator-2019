@@ -2,24 +2,28 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace airport_simulator_2019.GameObjects
 {
+
+
     public class Player : GameObject
     {
-        public ObservableCollection<Airplane> Airplanes { get; }
-        public ObservableCollection<Flight> Flights { get; }
+        public TrulyObservableCollection<Airplane> Airplanes { get; }
+        public TrulyObservableCollection<Flight> Flights { get; }
         public int Balance { get; private set; }
         public City HomeCity { get; private set; }
         public Schedule Schedule { get; private set; }
 
         public Player()
         {
-            Airplanes = new ObservableCollection<Airplane>();
-            Flights = new ObservableCollection<Flight>();
+            Airplanes = new TrulyObservableCollection<Airplane>();
+            Flights = new TrulyObservableCollection<Flight>();
             Schedule = new Schedule();
             Balance = 100000000;
             HomeCity = CityCatalog.Cities.Find(x => x.Name == "Пермь");
@@ -55,8 +59,7 @@ namespace airport_simulator_2019.GameObjects
             {
                 Airplane plane = Game.Shop.Sale(airplane);
                 Airplanes.Remove(plane);
-                int priceSale = airplane.PriceSale;
-                Balance += priceSale;
+                Pay(airplane.PriceSale);
             }
         }
 

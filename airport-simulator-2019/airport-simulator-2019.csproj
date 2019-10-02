@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Engine\TrulyObservableCollection.cs" />
     <Compile Include="GameObjects\City.cs" />
     <Compile Include="GameObjects\CityCatalog.cs" />
     <Compile Include="GameObjects\Flight.cs" />

@@ -10,11 +10,11 @@ namespace airport_simulator_2019.GameObjects
     {
         private static Random _random = new Random();
 
-        public ObservableCollection<Flight> Flights { get; private set; }
+        public TrulyObservableCollection<Flight> Flights { get; private set; }
 
         public FlightBoard()
         {
-            Flights = new ObservableCollection<Flight>(GenerateFlights());
+            Flights = new TrulyObservableCollection<Flight>(GenerateFlights());
         }
 
         public Flight TakeFlight(Flight flight)
