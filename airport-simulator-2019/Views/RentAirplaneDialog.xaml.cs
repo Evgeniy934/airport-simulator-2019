@@ -20,7 +20,8 @@ namespace airport_simulator_2019
             this.dailyRent = dailyRent;
 
             var now = Game.GetInstance().Time;
-            RentDateSelect.SelectedDate = now;
+            RentDateSelect.SelectedDate = now.AddDays(1);
+            RentDateSelect.DisplayDateStart = now.AddDays(1);
         }
 
         private void Rent_Click(object sender, RoutedEventArgs e)

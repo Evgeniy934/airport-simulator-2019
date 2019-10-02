@@ -14,9 +14,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="115*" />
-            <ColumnDefinition Width="83*"/>
-            <ColumnDefinition Width="198*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <WrapPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
@@ -128,11 +127,6 @@
 
             <TabItem Header="Мои Самолеты">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="398*"/>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="354*"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
@@ -149,7 +143,7 @@
                             <DataGridTextColumn Header="Цена покупки" Binding="{Binding PriceBuy}"/>
                             <DataGridTextColumn Header="Цена продажи" Binding="{Binding PriceSale}"/>
                             <DataGridTextColumn Header="Цена аренды" Binding="{Binding PriceRent}" />
-                            <DataGridTextColumn Header="Срок владения" Binding="{Binding RentDays}" />
+                            <DataGridTextColumn Header="Срок владения" />
                             <DataGridTextColumn Header="Местоположение" Binding="{Binding Location.Name}" />
                             <DataGridTextColumn Header="В рейсе?" Binding="{Binding InFly}" />
                         </DataGrid.Columns>
@@ -174,12 +168,6 @@
 
             <TabItem Header="Магазин Самолетов">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="289*"/>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="17*"/>
-                        <ColumnDefinition Width="446*"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
