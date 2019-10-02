@@ -37,7 +37,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <DataGrid Name="ScheduleGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single" AutoGenerateColumns="False">
+                    <DataGrid Name="ScheduleGrid" Grid.Row="0"  IsReadOnly="True"  SelectionMode="Single" AutoGenerateColumns="False" CanUserSortColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
@@ -51,7 +51,7 @@
                             <DataGridTextColumn Header="Кол-во пассажирских мест" />
                             <DataGridTextColumn Header="Скорость" />
                             <DataGridTextColumn Header="Расход топлива" />
-                            <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:G}}" Header="Дата и время вылета" />
+                            <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:G}}" Header="Дата и время вылета" SortDirection="Ascending" />
                             <DataGridTextColumn Header="Направление" />
                             <DataGridTextColumn Header="Время в пути" />
                             <DataGridTextColumn Binding="{Binding ArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:MM}}" Header="Дата и время прилета" />
