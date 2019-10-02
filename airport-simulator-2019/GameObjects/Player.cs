@@ -86,6 +86,18 @@ namespace airport_simulator_2019.GameObjects
             Flights.Add(taken);
         }
 
+        public void RefuseFlight(Flight flight)
+        {
+            if (!flight.InFly)
+            {
+                Flights.Remove(flight);
+                if (Schedule.Flights.Contains(flight))
+                {
+                    Schedule.Remove(flight);
+                }
+            }
+        }
+
         public void ScheduleFlight(Flight flight, Airplane airplane, DateTime time)
         {
             Schedule.Add(flight, airplane, time);

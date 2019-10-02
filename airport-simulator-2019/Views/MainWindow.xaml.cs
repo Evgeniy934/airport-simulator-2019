@@ -175,7 +175,7 @@ namespace airport_simulator_2019
         private void RemoveFromSchedule_Click(object sender, RoutedEventArgs e)
         {
             Flight flight = (Flight)ScheduleGrid.SelectedItem;
-            if (flight != null && !flight.InFly)
+            if (flight != null)
             {
                 switch (MessageBox.Show("Вы уверены, что хотите удалить этот рейс из расписания?", "Подтверждение удаления рейса", MessageBoxButton.YesNo))
                 {
@@ -188,10 +188,15 @@ namespace airport_simulator_2019
 
         private void RefuseFlight_Click(object sender, RoutedEventArgs e)
         {
-            switch (MessageBox.Show("Вы уверены, что хотите отказаться от этого рейса?", "Подтверждение отказа от рейса", MessageBoxButton.YesNo))
+            Flight flight = (Flight)MyFlighsGrid.SelectedItem;
+            if (flight != null)
             {
-                case MessageBoxResult.Yes:
-                    break;
+                switch (MessageBox.Show("Вы уверены, что хотите отказаться от этого рейса?", "Подтверждение отказа от рейса", MessageBoxButton.YesNo))
+                {
+                    case MessageBoxResult.Yes:
+                        _game.Player.RefuseFlight(flight);
+                        break;
+                }
             }
         }
 
