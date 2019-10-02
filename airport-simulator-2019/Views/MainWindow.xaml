@@ -101,11 +101,11 @@
                             <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
                             <DataGridTextColumn Binding="{Binding Distance}" Header="Расстояние" />
-                            <DataGridTextColumn Header="Вид" />
-                            <DataGridTextColumn Header="Тип" />
-                            <DataGridTextColumn Header="Частота" />
-                            <DataGridTextColumn Header="Необходимая грузоподъемность" />
-                            <DataGridTextColumn Header="Оплата за одного пассажира" />
+                            <DataGridTextColumn Binding="{Binding Type}" Header="Вид" />
+                            <DataGridTextColumn Binding="{Binding Regularity}" Header="Тип" />
+                            <DataGridTextColumn Binding="{Binding Frequency}" Header="Частота" />
+                            <DataGridTextColumn Binding="{Binding Distance}" Header="Необходимая грузоподъемность" />
+                            <DataGridTextColumn Binding="{Binding PricePassenger}" Header="Оплата за одного пассажира" />
                             <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
                             <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
                             <DataGridTextColumn Binding="{Binding Forfeit}" Header="Сумма неустойки" />
@@ -153,12 +153,11 @@
                             <DataGridTextColumn Binding="{Binding DepartureCity.Name}" Header="Город отправления" />
                             <DataGridTextColumn Binding="{Binding ArrivalCity.Name}" Header="Город назначения" />
                             <DataGridTextColumn Binding="{Binding Distance}" Header="Расстояние" />
-                            <DataGridTextColumn Binding="{Binding PlayerHasSuitableAirplane}" Header="Можно брать!" />
-                            <DataGridTextColumn Header="Вид" />
-                            <DataGridTextColumn Header="Тип" />
-                            <DataGridTextColumn Header="Частота" />
-                            <DataGridTextColumn Header="Необходимая грузоподъемность" />
-                            <DataGridTextColumn Header="Оплата за одного пассажира" />
+                            <DataGridTextColumn Binding="{Binding Type}" Header="Вид" />
+                            <DataGridTextColumn Binding="{Binding Regularity}" Header="Тип" />
+                            <DataGridTextColumn Binding="{Binding Frequency}" Header="Частота" />
+                            <DataGridTextColumn Binding="{Binding Distance}" Header="Необходимая грузоподъемность" />
+                            <DataGridTextColumn Binding="{Binding PricePassenger}" Header="Оплата за одного пассажира" />
                             <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
                             <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
                             <DataGridTextColumn Binding="{Binding Forfeit}" Header="Сумма неустойки" />

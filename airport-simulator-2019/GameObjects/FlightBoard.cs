@@ -53,13 +53,14 @@ namespace airport_simulator_2019.GameObjects
 
         public Flight GenerateFlight()
         {
-            (City, City) cityPair = CityCatalog.GetRandomCityPair();          
+            (City, City) cityPair = CityCatalog.GetRandomCityPair();
             return new Flight
             {
                 DepartureCity = cityPair.Item1,
                 ArrivalCity = cityPair.Item2,
-                Forfeit = RoundOff(_random.Next(10000, 50000), 10000),
-                PriceFlight = RoundOff(_random.Next(1000, 10000), 1000),
+                RequiredLoad = RoundOff(_random.Next(5000, 50000), 100),
+                Forfeit = RoundOff(_random.Next(1000000, 20000000), 1000000),
+                PriceFlight = RoundOff(_random.Next(100000, 3000000), 100000),
                 ExpireDate = Game.Time.AddDays(_random.Next(1, 7)),
             };
         }
