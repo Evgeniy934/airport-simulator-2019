@@ -74,20 +74,21 @@ namespace airport_simulator_2019.Engine
                 return;
             }
 
-
             int seconds = (int)Math.Pow(60.0, GameSpeed);
-            
-            for (int j = 0; j < seconds; j++)
+            var newTime = Time.AddSeconds(seconds);
+
+            int minutes = (int) (newTime - Time).TotalMinutes;            
+            for (int j = 0; j < minutes; j++)
             {
-                Time = Time.AddSeconds(1);
+                Time = Time.AddMinutes(1);
                 for (int i = _gameObjects.Count - 1; i >= 0; i--)
                 {
-                    _gameObjects[i].OnSecond();
+                    _gameObjects[i].OnMinute();
                 }
             }
 
-            Tick?.Invoke();
-
+            Time = newTime;
+            
             if (_currentDay != Time.Day)
             {
                 for (int i = _gameObjects.Count - 1; i >= 0; i--)
@@ -98,6 +99,8 @@ namespace airport_simulator_2019.Engine
                 _currentDay = Time.Day;
                 DayBegin?.Invoke();
             }
+
+            Tick?.Invoke();
         }
     }
 }

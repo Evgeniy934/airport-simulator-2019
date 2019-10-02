@@ -18,8 +18,8 @@ namespace airport_simulator_2019
 
             var now = Game.GetInstance().Time;
             DateComboBox.SelectedDate = now;
-            HoursText.Text = now.Hour.ToString();
-            MinutesText.Text = now.Minute.ToString();
+            HoursText.Text = $"{now.Hour}";
+            MinutesText.Text = $"{now.Minute + 1}";
         }
 
         private void Transfer_Click(object sender, RoutedEventArgs e)

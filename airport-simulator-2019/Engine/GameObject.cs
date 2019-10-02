@@ -39,7 +39,7 @@ namespace airport_simulator_2019.Engine
             return obj != null && obj.Id == Id;
         }
 
-        public virtual void OnSecond()
+        public virtual void OnMinute()
         { }
 
         public virtual void OnDayBegin()

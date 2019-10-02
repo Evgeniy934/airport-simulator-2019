@@ -29,7 +29,7 @@ namespace airport_simulator_2019.GameObjects
             Flights.Remove(flight);
         }
 
-        public override void OnSecond()
+        public override void OnMinute()
         {
             for (int i = Flights.Count - 1; i >= 0; i--)
             {

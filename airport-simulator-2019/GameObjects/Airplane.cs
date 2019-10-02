@@ -57,7 +57,7 @@ namespace airport_simulator_2019.GameObjects
             return TimeSpan.FromHours(distance / Speed);
         }
 
-        public override void OnSecond()
+        public override void OnMinute()
         {
             if (InFly)
             {
