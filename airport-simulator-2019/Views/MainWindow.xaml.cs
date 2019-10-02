@@ -198,7 +198,7 @@ namespace airport_simulator_2019
                 _game.Pause();
 
                 var dialog = new TransferAirplaneDialog(
-                    CityCatalog.Cities.Where(x => x != _game.Player.HomeCity));
+                    CityCatalog.Cities.Where(x => x != airplane.Location));
                 if ((bool)dialog.ShowDialog())
                 {
                     City city = (City) dialog.CitiesComboBox.SelectedItem;
