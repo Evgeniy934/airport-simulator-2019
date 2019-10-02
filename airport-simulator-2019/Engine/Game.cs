@@ -30,7 +30,7 @@ namespace airport_simulator_2019.Engine
         public FlightBoard FlightBoard { get; private set; }
         
         public Action Tick;
-        public Action DayBegin;
+        public Action FlightComplete;
 
         private Game()
         {
@@ -97,7 +97,6 @@ namespace airport_simulator_2019.Engine
                 }
 
                 _currentDay = Time.Day;
-                DayBegin?.Invoke();
             }
 
             Tick?.Invoke();

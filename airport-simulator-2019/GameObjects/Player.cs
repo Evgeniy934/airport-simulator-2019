@@ -124,10 +124,13 @@ namespace airport_simulator_2019.GameObjects
             Flight flight = Flights.FirstOrDefault(x => x.Airplane == airplane);
             if (flight != null)
             {
+                flight.RaisePropertyChanged();
                 Pay(flight.PriceFlight);
                 Flights.Remove(flight);
             }
             Schedule.CompleteFlight(flight);
+
+            Game.FlightComplete?.Invoke();
         }
 
         public override void OnDayBegin()

@@ -24,7 +24,7 @@ namespace airport_simulator_2019
             _game.Run();
 
             _game.Tick = OnTick;
-            _game.DayBegin = OnDayBegin;
+            _game.FlightComplete = OnFlightComplete;
 
             MyAirplanesGrid.ItemsSource = _game.Player.Airplanes;
             ShopDataGrid.ItemsSource = _game.Shop.Airplanes;
@@ -233,14 +233,16 @@ namespace airport_simulator_2019
             UpdateUI();
         }
 
+        private void OnFlightComplete()
+        {
+            FlightBoardGrid.Items.Refresh();
+            MyFlighsGrid.Items.Refresh();
+        }
+
         private void UpdateUI()
         {
             Balance.Text = $"Бюджет Аэропорта: {_game.Player.Balance} руб.";
             CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
-        }
-
-        private void OnDayBegin()
-        {
         }
     }
 }

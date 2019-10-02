@@ -21,7 +21,7 @@ namespace airport_simulator_2019.Engine
             _counter++;
         }
 
-        protected void RaisePropertyChanged()
+        public void RaisePropertyChanged()
         {
             PropertyChanged(this, new PropertyChangedEventArgs(string.Empty));
         }
