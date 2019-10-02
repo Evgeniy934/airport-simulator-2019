@@ -28,14 +28,14 @@ namespace airport_simulator_2019.GameObjects
         public DateTime? RentEnd { get; set; }
         public bool InRent => RentEnd != null;
         public bool ReturnTomorrow =>
-            InRent ? (Game.Time.DayOfYear + 1) == RentEnd.Value.DayOfYear
+            InRent ? Game.Time.Date == RentEnd
             : false;
 
         public int RentDays
         {
             get
             {
-                return InRent ? (RentEnd - Game.Time).GetValueOrDefault().Days + 1 : -1;
+                return InRent ? (RentEnd - Game.Time.Date).GetValueOrDefault().Days + 1 : -1;
             }
         } // срок владения (аренды) в днях
 
