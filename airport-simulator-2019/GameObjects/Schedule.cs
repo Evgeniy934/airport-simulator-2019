@@ -48,6 +48,7 @@ namespace airport_simulator_2019.GameObjects
                     {
                         if (flight.DepartureTime.EqualsUpToMinutes(Game.Time))
                         {
+                            Game.Player.Spent(flight.FlightExpenses.Value);
                             flight.Airplane.FlyTo(flight.ArrivalCity);
                         }
                     }

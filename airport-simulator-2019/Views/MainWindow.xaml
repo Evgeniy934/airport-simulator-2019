@@ -65,9 +65,9 @@
                             <DataGridTextColumn Header="Расход топлива" />
                             <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:G}}" Header="Дата и время вылета" SortDirection="Ascending" />
                             <DataGridTextColumn Header="Направление" />
-                            <DataGridTextColumn Header="Время в пути" />
+                            <DataGridTextColumn Binding="{Binding TimeInFly, StringFormat=hh\\:mm}" Header="Время в пути" />
                             <DataGridTextColumn Binding="{Binding ArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:MM}}" Header="Дата и время прилета" />
-                            <DataGridTextColumn Header="Расход" />
+                            <DataGridTextColumn Binding="{Binding FlightExpenses}" Header="Расход" />
                         </DataGrid.Columns>
                     </DataGrid>
 
