@@ -53,7 +53,7 @@ namespace airport_simulator_2019.GameObjects
             {
                 Airplane airplane = _rent[i];
                 int payment = airplane.PriceRent;
-                if (Game.Time > airplane.RentEnd)
+                if (Game.Time.Day > airplane.RentEnd.Value.Day + 1)
                 {
                     payment *= 2;
                 }
