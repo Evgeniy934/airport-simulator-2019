@@ -137,7 +137,7 @@ namespace airport_simulator_2019.GameObjects
                 Airplane airplane = Airplanes[i];
                 if (airplane.InRent)
                 {
-                    if (Game.Time > airplane.RentEnd)
+                    if (Game.Time.Day > airplane.RentEnd.Value.Day)
                     {
                         if (!airplane.InFly)
                         {
