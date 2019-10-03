@@ -53,7 +53,8 @@ namespace airport_simulator_2019.GameObjects
 
         public bool IsAvailableForFlight(Flight flight)
         {
-            return (DistanceFly >= flight.Distance) && (MaxLoad >= flight.RequiredLoad);
+            return (DistanceFly >= flight.Distance) && 
+                (flight.Type == "Грузовой" ? (MaxLoad >= flight.RequiredLoad) : (QuantitySeat >= flight.RequiredLoad));
         }
 
         public TimeSpan GetFlyDuration(City a, City b)
