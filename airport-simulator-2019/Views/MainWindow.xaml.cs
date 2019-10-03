@@ -247,8 +247,8 @@ namespace airport_simulator_2019
 
         private void UpdateUI()
         {
-            FlightBoardGrid.Items.Refresh();
-            MyFlighsGrid.Items.Refresh();
+            //FlightBoardGrid.Items.Refresh();
+            //MyFlighsGrid.Items.Refresh();
         }
     }
 }

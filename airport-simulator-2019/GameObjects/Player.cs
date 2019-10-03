@@ -50,6 +50,21 @@ namespace airport_simulator_2019.GameObjects
                 Airplane plane = Game.Shop.Buy(airplane);
                 Airplanes.Add(plane);
                 Balance -= price;
+
+                UpdateFlights();
+            }
+        }
+
+        private void UpdateFlights()
+        {
+            foreach (var f in Game.FlightBoard.Flights)
+            {
+                f.RaisePropertyChanged();
+            }
+
+            foreach (var f in Flights)
+            {
+                f.RaisePropertyChanged();
             }
         }
 
@@ -60,6 +75,8 @@ namespace airport_simulator_2019.GameObjects
                 Airplane plane = Game.Shop.Sale(airplane);
                 Airplanes.Remove(plane);
                 Pay(airplane.PriceSale);
+
+                UpdateFlights();
             }
         }
 
@@ -71,6 +88,8 @@ namespace airport_simulator_2019.GameObjects
                 Airplane plane = Game.Shop.Rent(airplane, dateEnd);
                 Airplanes.Add(plane);
                 Balance -= price;
+
+                UpdateFlights();
             }
         }
 
@@ -78,6 +97,8 @@ namespace airport_simulator_2019.GameObjects
         {
             Airplanes.Remove(airplane);
             Game.Shop.ReturnRent(airplane);
+
+            UpdateFlights();
         }
 
         public void TakeFromFlightBoard(Flight flight)
