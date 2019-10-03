@@ -152,7 +152,7 @@ namespace airport_simulator_2019
             {
                 _game.Pause();
 
-                var dialog = new AddToScheduleDialog(_game.Player.Airplanes,flight.ExpireDate );
+                var dialog = new AddToScheduleDialog(_game.Player.Airplanes, flight);
                 if ((bool)dialog.ShowDialog())
                 { 
                     DateTime? date = dialog.DateComboBox.SelectedDate;

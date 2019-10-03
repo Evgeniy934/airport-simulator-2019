@@ -28,6 +28,8 @@ namespace airport_simulator_2019.GameObjects
         public bool InFly => Airplane?.InFly == true;
         public bool PlayerHasSuitableAirplane 
             => Game.Player.Airplanes.FirstOrDefault(x => x.IsAvailableForFlight(this)) != null;
+        public bool IsRegular => Regularity != "Разовый";
+        public bool IsPassengerFlight => Type == "Пассажирский";
         
         public Flight()
         {
