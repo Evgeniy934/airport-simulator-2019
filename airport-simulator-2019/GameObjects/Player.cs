@@ -49,7 +49,6 @@ namespace airport_simulator_2019.GameObjects
             {
                 Airplane plane = Game.Shop.Buy(airplane);
                 Airplanes.Add(plane);
-                Balance -= price;
 
                 UpdateFlights();
             }
@@ -74,7 +73,6 @@ namespace airport_simulator_2019.GameObjects
             {
                 Airplane plane = Game.Shop.Sale(airplane);
                 Airplanes.Remove(plane);
-                Pay(airplane.PriceSale);
 
                 UpdateFlights();
             }
@@ -87,7 +85,6 @@ namespace airport_simulator_2019.GameObjects
             {
                 Airplane plane = Game.Shop.Rent(airplane, dateEnd);
                 Airplanes.Add(plane);
-                Balance -= price;
 
                 UpdateFlights();
             }
