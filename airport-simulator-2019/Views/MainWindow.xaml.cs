@@ -1,14 +1,8 @@
 ﻿using airport_simulator_2019.Engine;
 using airport_simulator_2019.GameObjects;
 using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace airport_simulator_2019
 {
@@ -31,8 +25,6 @@ namespace airport_simulator_2019
             FlightBoardGrid.ItemsSource = _game.FlightBoard.Flights;
             MyFlighsGrid.ItemsSource = _game.Player.Flights;
             ScheduleGrid.ItemsSource = _game.Player.Schedule.Flights;
-
-            UpdateUI();
         }
 
         private void RealTime_Click(object sender, RoutedEventArgs e)
@@ -75,7 +67,6 @@ namespace airport_simulator_2019
                 {
                     case MessageBoxResult.Yes:
                         _game.Player.BuyAirplane(airplane);
-                        UpdateUI();
                         break;
                 }
             }
@@ -105,7 +96,6 @@ namespace airport_simulator_2019
             {
                 case MessageBoxResult.Yes:
                     _game.Player.SaleAirplane(airplane);
-                    UpdateUI();
                     break;
             }
         }
@@ -123,7 +113,6 @@ namespace airport_simulator_2019
                     if (dateEnd.HasValue)
                     {
                         _game.Player.RentAirplane(airplane, dateEnd.Value);
-                        UpdateUI();
                     }
                 }
                 _game.Unpause();
@@ -139,7 +128,6 @@ namespace airport_simulator_2019
                 {
                     case MessageBoxResult.Yes:
                         _game.Player.TakeFromFlightBoard(flight);
-                        UpdateUI();
                         break;
                 }
             }
@@ -148,11 +136,11 @@ namespace airport_simulator_2019
         private void AddToSchedule_Click(object sender, RoutedEventArgs e)
         {
             Flight flight = (Flight)MyFlighsGrid.SelectedItem;
-            if (flight != null && !flight.InFly)
+            if (flight != null && !flight.InFly && flight.PlayerHasSuitableAirplane)
             {
                 _game.Pause();
 
-                var dialog = new AddToScheduleDialog(_game.Player.Airplanes, flight);
+                var dialog = new AddToScheduleDialog(_game.Player.Airplanes.Where(a => a.IsAvailableForFlight(flight)), flight);
                 if ((bool)dialog.ShowDialog())
                 { 
                     DateTime? date = dialog.DateComboBox.SelectedDate;
@@ -170,8 +158,6 @@ namespace airport_simulator_2019
                         date += new TimeSpan(hours, minutes, 0);
 
                         _game.Player.ScheduleFlight(flight, airplane, date.Value);
-
-                        UpdateUI();
                     }
                 }
                 _game.Unpause();
@@ -213,8 +199,7 @@ namespace airport_simulator_2019
             {
                 _game.Pause();
 
-                var dialog = new TransferAirplaneDialog(
-                    CityCatalog.Cities.Where(x => x != airplane.Location));
+                var dialog = new TransferAirplaneDialog(CityCatalog.Cities.Where(x => x != airplane.Location));
                 if ((bool)dialog.ShowDialog())
                 {
                     City city = (City) dialog.CitiesComboBox.SelectedItem;
@@ -226,8 +211,6 @@ namespace airport_simulator_2019
                         date += new TimeSpan(hours, minutes, 0);
 
                         _game.Player.TransferAirplane(airplane, city, date.Value);
-
-                        UpdateUI();
                     }
                 }
                 _game.Unpause();
@@ -242,13 +225,6 @@ namespace airport_simulator_2019
 
         private void OnFlightComplete()
         {
-            UpdateUI();
-        }
-
-        private void UpdateUI()
-        {
-            //FlightBoardGrid.Items.Refresh();
-            //MyFlighsGrid.Items.Refresh();
         }
     }
 }
