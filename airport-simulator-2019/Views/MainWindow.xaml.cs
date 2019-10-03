@@ -154,9 +154,15 @@ namespace airport_simulator_2019
 
                 var dialog = new AddToScheduleDialog(_game.Player.Airplanes,flight.ExpireDate );
                 if ((bool)dialog.ShowDialog())
-                {
+                { 
                     DateTime? date = dialog.DateComboBox.SelectedDate;
                     Airplane airplane = (Airplane) dialog.AirplaneComboBox.SelectedItem;
+
+                    if (airplane.Location != flight.DepartureCity)
+                    {
+                        MessageBox.Show("Требуется перегнать самолет!");
+                    }
+
                     if (date.HasValue && airplane != null)
                     {
                         var hours = int.Parse(dialog.HoursText.Text);

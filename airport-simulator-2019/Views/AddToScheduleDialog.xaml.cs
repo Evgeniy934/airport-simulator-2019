@@ -14,12 +14,15 @@ namespace airport_simulator_2019
 
             AirplaneComboBox.ItemsSource = airplanes;
             AirplaneComboBox.SelectedItem = airplanes.FirstOrDefault();
-            
+
+           
             var now = Game.GetInstance().Time;
             DateComboBox.SelectedDate = ExpireDate;
             DateComboBox.DisplayDateStart = ExpireDate;
             HoursText.Text = $"{now.Hour}";
             MinutesText.Text = $"{now.Minute + 1}";
+
+
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

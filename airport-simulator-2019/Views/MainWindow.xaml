@@ -156,7 +156,7 @@
                             <DataGridTextColumn Binding="{Binding Type}" Header="Вид" />
                             <DataGridTextColumn Binding="{Binding Regularity}" Header="Тип" />
                             <DataGridTextColumn Binding="{Binding Frequency}" Header="Частота" />
-                            <DataGridTextColumn Binding="{Binding Distance}" Header="Необходимая грузоподъемность" />
+                            <DataGridTextColumn Binding="{Binding RequiredLoad}" Header="Необходимая грузоподъемность" />
                             <DataGridTextColumn Binding="{Binding PricePassenger}" Header="Оплата за одного пассажира" />
                             <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
                             <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />

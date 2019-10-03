@@ -9,11 +9,11 @@ namespace airport_simulator_2019.GameObjects
         public City DepartureCity { get; set; }
         public City ArrivalCity { get; set; }
         public int Distance => CityCatalog.GetDistance(DepartureCity, ArrivalCity);
-        public string Type => "Грузовой";
+        public string Type { get; set; }
         public string Regularity => "Разовый";
         public string Frequency => "";
         public int RequiredLoad { get; set; }
-        public string PricePassenger => "";
+        public int PricePassenger { get; set;}
         public int PriceFlight { get; set; } // оплата за рейс
         public DateTime ExpireDate { get; set; }
         public int Forfeit { get; set; }
