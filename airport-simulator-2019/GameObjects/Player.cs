@@ -137,16 +137,11 @@ namespace airport_simulator_2019.GameObjects
             ScheduleFlight(flight, airplane, time);
         }
 
-        public void CompleteFlight(Airplane airplane)
+        public void CompleteFlight(Flight flight)
         {
-            Flight flight = Flights.FirstOrDefault(x => x.Airplane == airplane);
-            if (flight != null)
-            {
-                flight.RaisePropertyChanged();
-                Pay(flight.PriceFlight);
-                Flights.Remove(flight);
-            }
-            Schedule.CompleteFlight(airplane);
+            Pay(flight.PriceFlight);
+            Flights.Remove(flight);
+            Schedule.CompleteFlight(flight);
 
             Game.FlightComplete?.Invoke();
         }

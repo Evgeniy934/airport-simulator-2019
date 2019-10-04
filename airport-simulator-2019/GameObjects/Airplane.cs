@@ -16,10 +16,9 @@ namespace airport_simulator_2019.GameObjects
         public int Fuel { get; set; } // расход топлива
         public int PriceRent { get; set; } // цена аренды за 1 день
         public City Location { get; set; }  //местоположение
-        public City FlyingTo { get; private set; }
-        public DateTime ArrivalTime { get; private set; }
-        public bool InFly => FlyingTo != null;
-                                        
+        public Flight Flight { get; private set; }
+        public bool InFly => Flight != null;
+
         ///
 
         public int PriceBuy { get; set; } // цена покупки
@@ -43,15 +42,18 @@ namespace airport_simulator_2019.GameObjects
         {
         }
 
+        public bool CanFlyTo(Flight flight) => flight.DepartureCity == Location
+            && CanFlyTo(flight.ArrivalCity);
+
         public bool CanFlyTo(City city) => city != Location
             && CityCatalog.GetDistance(Location, city) <= DistanceFly;
 
-        public void FlyTo(City city)
+        public void FlyTo(Flight flight)
         {
-            if (CanFlyTo(city))
+            if (CanFlyTo(flight))
             {
-                FlyingTo = city;
-                ArrivalTime = Game.Time + GetFlyDuration(Location, city);
+                Flight = flight;
+                Flight.ArrivalTime = Game.Time + GetFlyDuration(Flight.DepartureCity, Flight.ArrivalCity);
                 RaisePropertyChanged();
             }
         }
@@ -72,12 +74,11 @@ namespace airport_simulator_2019.GameObjects
         {
             if (InFly)
             {
-                if (Game.Time >= ArrivalTime)
+                if (Game.Time >= Flight.ArrivalTime)
                 {
-                    // flight end
-                    Location = FlyingTo;
-                    FlyingTo = null;
-                    Game.Player.CompleteFlight(this);
+                    Location = Flight.ArrivalCity;
+                    Game.Player.CompleteFlight(Flight);
+                    Flight = null;
                     RaisePropertyChanged();
                 }
             }
