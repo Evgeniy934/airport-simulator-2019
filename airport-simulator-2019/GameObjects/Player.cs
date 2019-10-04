@@ -170,7 +170,7 @@ namespace airport_simulator_2019.GameObjects
             for (int i = Flights.Count - 1; i >= 0; i--)
             {
                 Flight flight = Flights[i];
-                if (Game.Time > flight.ExpireDate)
+                if (Game.Time.Day > flight.FlightDate.Day)
                 {
                     Spent(flight.Forfeit);
                     Flights.Remove(flight);

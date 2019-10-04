@@ -63,7 +63,7 @@
                             <DataGridTextColumn Binding="{Binding Airplane.QuantitySeat}" Header="Кол-во пассажирских мест" />
                             <DataGridTextColumn Binding="{Binding Airplane.Speed}" Header="Скорость" />
                             <DataGridTextColumn Binding="{Binding Airplane.Fuel}" Header="Расход топлива" />
-                            <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:G}}" Header="Дата и время вылета" SortDirection="Ascending" />
+                            <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:dd.MM.yyyy HH:MM}}" Header="Дата и время вылета" SortDirection="Ascending" />
                             <DataGridTextColumn Header="Направление" />
                             <DataGridTextColumn Binding="{Binding TimeInFly, StringFormat=hh\\:mm}" Header="Время в пути" />
                             <DataGridTextColumn Binding="{Binding ArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:MM}}" Header="Дата и время прилета" />
@@ -107,7 +107,7 @@
                             <DataGridTextColumn Binding="{Binding RequiredLoad}" Header="Необходимая грузоподъемность" />
                             <DataGridTextColumn Binding="{Binding PricePassenger}" Header="Оплата за одного пассажира" />
                             <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
-                            <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
+                            <DataGridTextColumn Binding="{Binding FlightDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
                             <DataGridTextColumn Binding="{Binding Forfeit}" Header="Сумма неустойки" />
                         </DataGrid.Columns>
 
@@ -159,7 +159,7 @@
                             <DataGridTextColumn Binding="{Binding RequiredLoad}" Header="Необходимая грузоподъемность" />
                             <DataGridTextColumn Binding="{Binding PricePassenger}" Header="Оплата за одного пассажира" />
                             <DataGridTextColumn Binding="{Binding PriceFlight}" Header="Оплата за рейс" />
-                            <DataGridTextColumn Binding="{Binding ExpireDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
+                            <DataGridTextColumn Binding="{Binding FlightDate, StringFormat={}{0:dd.MM.yyyy}}" Header="Дата" />
                             <DataGridTextColumn Binding="{Binding Forfeit}" Header="Сумма неустойки" />
                         </DataGrid.Columns>
 

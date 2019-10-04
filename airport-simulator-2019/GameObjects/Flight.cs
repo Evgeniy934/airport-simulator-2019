@@ -15,7 +15,7 @@ namespace airport_simulator_2019.GameObjects
         public int RequiredLoad { get; set; }
         public int PricePassenger { get; set;}
         public int PriceFlight { get; set; } // оплата за рейс
-        public DateTime ExpireDate { get; set; }
+        public DateTime FlightDate { get; set; }
         public int Forfeit { get; set; }
 
         public DateTime DepartureTime { get; set; }        

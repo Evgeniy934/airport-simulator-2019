@@ -28,7 +28,7 @@ namespace airport_simulator_2019.GameObjects
             for (int i = Flights.Count - 1; i >= 0; i--)
             {
                 Flight flight = Flights[i];
-                if (Game.Time.DayOfYear >= flight.ExpireDate.DayOfYear)
+                if (Game.Time.DayOfYear >= flight.FlightDate.DayOfYear)
                 {
                     Flights.RemoveAt(i);
                 }
@@ -63,7 +63,7 @@ namespace airport_simulator_2019.GameObjects
                 RequiredLoad = RoundOff(_random.Next(5000, 50000), 100),
                 Forfeit = RoundOff(_random.Next(1000000, 20000000), 1000000),
                 PriceFlight = RoundOff(_random.Next(100000, 3000000), 100000),
-                ExpireDate = Game.Time.AddDays(_random.Next(1, 7)),
+                FlightDate = Game.Time.AddDays(_random.Next(1, 7)),
             };
         }
 
@@ -79,7 +79,7 @@ namespace airport_simulator_2019.GameObjects
                 Forfeit = RoundOff(_random.Next(1000000, 20000000), 1000000),
                 PricePassenger = RoundOff(_random.Next(2000, 10000), 250),
                 PriceFlight = 0,
-                ExpireDate = Game.Time.AddDays(_random.Next(1, 7)),
+                FlightDate = Game.Time.AddDays(_random.Next(1, 7)),
 
             }  ;
             flights.PriceFlight = flights.PricePassenger * flights.RequiredLoad;

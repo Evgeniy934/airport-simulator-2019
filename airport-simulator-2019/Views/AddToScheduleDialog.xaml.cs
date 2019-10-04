@@ -25,7 +25,7 @@ namespace airport_simulator_2019
             }
             else
             {
-                DateComboBox.SelectedDate = flight.ExpireDate;
+                DateComboBox.SelectedDate = flight.FlightDate;
                 DateComboBox.IsEnabled = false;
             }
 
