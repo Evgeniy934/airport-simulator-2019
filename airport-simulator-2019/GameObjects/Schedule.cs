@@ -32,8 +32,9 @@ namespace airport_simulator_2019.GameObjects
             }
         }
 
-        public void CompleteFlight(Flight flight)
+        public void CompleteFlight(Airplane airplane)
         {
+            Flight flight = Flights.FirstOrDefault(x => x.Airplane == airplane);
             Flights.Remove(flight);
         }
 
@@ -44,17 +45,17 @@ namespace airport_simulator_2019.GameObjects
                 Flight flight = Flights[i];
                 if (!flight.InFly)
                 {
-                    if (flight.Airplane.Location == flight.DepartureCity)
+                    if (flight.DepartureTime.EqualsUpToMinutes(Game.Time))
                     {
-                        if (flight.DepartureTime.EqualsUpToMinutes(Game.Time))
+                        if (flight.Airplane.CanFlyTo(flight.ArrivalCity))
                         {
                             Game.Player.Spent(flight.FlightExpenses.Value);
                             flight.Airplane.FlyTo(flight.ArrivalCity);
                         }
-                    }
-                    else
-                    {
-                        Flights.Remove(flight);
+                        else
+                        {
+                            Flights.Remove(flight);
+                        }
                     }
                 }
             }

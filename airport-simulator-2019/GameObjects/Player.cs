@@ -146,7 +146,7 @@ namespace airport_simulator_2019.GameObjects
                 Pay(flight.PriceFlight);
                 Flights.Remove(flight);
             }
-            Schedule.CompleteFlight(flight);
+            Schedule.CompleteFlight(airplane);
 
             Game.FlightComplete?.Invoke();
         }

@@ -198,8 +198,8 @@ namespace airport_simulator_2019
             if (airplane != null)
             {
                 _game.Pause();
-
-                var dialog = new TransferAirplaneDialog(CityCatalog.Cities.Where(x => x != airplane.Location));
+                
+                var dialog = new TransferAirplaneDialog(CityCatalog.Cities.Where(x => airplane.CanFlyTo(x)));
                 if ((bool)dialog.ShowDialog())
                 {
                     City city = (City) dialog.CitiesComboBox.SelectedItem;
