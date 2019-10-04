@@ -23,6 +23,7 @@
             <Button Name="RealTime" Content=">" Margin="5 0 5 0" Click="RealTime_Click" IsEnabled="False" />
             <Button Name="Fast"  Content=">>" Margin="5 0 5 0" Click="Fast_Click" />
             <Button Name="VeryFast" Content=">>>" Margin="5 0 5 0" Click="VeryFast_Click" />
+            <Button Name="ExtremelyFast" Content=">>>>" Margin="5 0 5 0" Click="ExtremelyFast_Click" />
         </WrapPanel>
 
         <WrapPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right">

@@ -72,6 +72,10 @@ namespace airport_simulator_2019.Engine
             }
 
             int seconds = (int)Math.Pow(60.0, GameSpeed);
+            if (GameSpeed > 2)
+            {
+                seconds = (int) TimeSpan.FromDays(1).TotalSeconds;
+            }
 
             for (int i = 0; i < seconds; i++)
             {

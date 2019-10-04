@@ -32,6 +32,7 @@ namespace airport_simulator_2019
             RealTime.IsEnabled = false;
             Fast.IsEnabled = true;
             VeryFast.IsEnabled = true;
+            ExtremelyFast.IsEnabled = true;
 
             _game.GameSpeed = 0;
         }
@@ -41,6 +42,7 @@ namespace airport_simulator_2019
             RealTime.IsEnabled = true;
             Fast.IsEnabled = false;
             VeryFast.IsEnabled = true;
+            ExtremelyFast.IsEnabled = true;
 
             _game.GameSpeed = 1;
         }
@@ -50,8 +52,19 @@ namespace airport_simulator_2019
             RealTime.IsEnabled = true;
             Fast.IsEnabled = true;
             VeryFast.IsEnabled = false;
+            ExtremelyFast.IsEnabled = true;
 
             _game.GameSpeed = 2;
+        }
+
+        private void ExtremelyFast_Click(object sender, RoutedEventArgs e)
+        {
+            RealTime.IsEnabled = true;
+            Fast.IsEnabled = true;
+            VeryFast.IsEnabled = true;
+            ExtremelyFast.IsEnabled = false;
+
+            _game.GameSpeed = 3;
         }
 
         private void BuyAirplane_Click(object sender, RoutedEventArgs e)
