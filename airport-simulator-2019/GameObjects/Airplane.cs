@@ -43,15 +43,11 @@ namespace airport_simulator_2019.GameObjects
         {
         }
 
+
         public void FlyTo(City city)
         {
             FlyingTo = city;
             RaisePropertyChanged();
-        }
-
-        public bool CanFlyTo(City city)
-        {
-            return (Location != city) && (DistanceFly >= CityCatalog.GetDistance(Location, city));
         }
 
         public bool IsAvailableForFlight(Flight flight)
