@@ -47,7 +47,6 @@ namespace airport_simulator_2019.GameObjects
                     {
                         if (flight.DepartureTime.EqualsUpToMinutes(Game.Time))
                         {
-                            flight.Airplane = null;
                             Flights.Remove(flight);
                         }
                     }
