@@ -1,14 +1,18 @@
 ﻿using airport_simulator_2019.Engine;
 using airport_simulator_2019.GameObjects;
 using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 
 namespace airport_simulator_2019
 {
     public partial class MainWindow : Window
     {
         private Game _game = Game.GetInstance();
+
+        CollectionViewSource _scheduleViewSource;
 
         public MainWindow()
         {
@@ -20,11 +24,17 @@ namespace airport_simulator_2019
             _game.Tick = OnTick;
             _game.FlightComplete = OnFlightComplete;
 
+            _scheduleViewSource = new CollectionViewSource();
+            _scheduleViewSource.Source = _game.Player.Schedule.Flights;
+
+            _scheduleViewSource.SortDescriptions.Add(new SortDescription("DepartureTime", ListSortDirection.Ascending));
+
+
             MyAirplanesGrid.ItemsSource = _game.Player.Airplanes;
             ShopDataGrid.ItemsSource = _game.Shop.Airplanes;
             FlightBoardGrid.ItemsSource = _game.FlightBoard.Flights;
             MyFlighsGrid.ItemsSource = _game.Player.Flights;
-            ScheduleGrid.ItemsSource = _game.Player.Schedule.Flights;
+            ScheduleGrid.ItemsSource = _scheduleViewSource.View;
         }
 
         private void RealTime_Click(object sender, RoutedEventArgs e)
@@ -171,6 +181,7 @@ namespace airport_simulator_2019
                         date += new TimeSpan(hours, minutes, 0);
 
                         _game.Player.ScheduleFlight(flight, airplane, date.Value);
+                        _scheduleViewSource.View.Refresh();
                     }
                 }
                 _game.Unpause();
