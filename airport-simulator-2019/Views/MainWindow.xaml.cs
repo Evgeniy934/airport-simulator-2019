@@ -250,10 +250,13 @@ namespace airport_simulator_2019
 
         private void OnNoMoney()
         {
+            MessageBox.Show("Вы на грани банкротства! Арендодатели забирают свои самолеты обратно. Вам необходимо продать свое имущество (самолеты), чтобы восстановить бюджет");
         }
 
         private void OnGameOver()
         {
+            MessageBox.Show("Вы банкрот! Конец игры!");
+            this.Close();
         }
     }
 }
