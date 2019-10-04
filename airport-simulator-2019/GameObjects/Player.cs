@@ -30,11 +30,8 @@ namespace airport_simulator_2019.GameObjects
         }
 
         public void Spent(int howMuch)
-        { 
-            if (Balance >= howMuch)
-            {
-                Balance -= howMuch;
-            }
+        {
+            Balance -= howMuch;
         }
 
         public void Pay(int howMuch)
@@ -143,7 +140,7 @@ namespace airport_simulator_2019.GameObjects
             Flights.Remove(flight);
             Schedule.CompleteFlight(flight);
 
-            Game.FlightComplete?.Invoke();
+            Game.NoMoney?.Invoke();
         }
 
         public override void OnDayBegin()

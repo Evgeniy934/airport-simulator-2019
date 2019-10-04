@@ -22,7 +22,8 @@ namespace airport_simulator_2019
             _game.Run();
 
             _game.Tick = OnTick;
-            _game.FlightComplete = OnFlightComplete;
+            _game.NoMoney = OnNoMoney;
+            _game.GameOver = OnGameOver;
 
             _scheduleViewSource = new CollectionViewSource();
             _scheduleViewSource.Source = _game.Player.Schedule.Flights;
@@ -247,7 +248,11 @@ namespace airport_simulator_2019
             CurrentTime.Text = $"{_game.Time:dd.MM.yyyy HH:mm:ss}";
         }
 
-        private void OnFlightComplete()
+        private void OnNoMoney()
+        {
+        }
+
+        private void OnGameOver()
         {
         }
     }

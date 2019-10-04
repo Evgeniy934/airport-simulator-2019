@@ -59,6 +59,18 @@ namespace airport_simulator_2019.GameObjects
                 }
                 Game.Player.Spent(payment);
             }
+
+            if (Game.Player.Balance < 0)
+            {
+                for (int i = Game.Player.Airplanes.Count - 1; i >= 0; i--)
+                {
+                    Airplane airplane = Game.Player.Airplanes[i];
+                    if (airplane.InRent && !airplane.InFly)
+                    {
+                        Game.Player.ReturnRentedAirplane(airplane);
+                    }
+                }
+            }
         }
 
         private List<Airplane> GenerateAirplanes()

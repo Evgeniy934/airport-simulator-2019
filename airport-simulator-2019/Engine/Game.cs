@@ -20,7 +20,6 @@ namespace airport_simulator_2019.Engine
         private static readonly Game _instance = new Game();
         private readonly List<GameObject> _gameObjects = new List<GameObject>();
         private readonly DispatcherTimer _timer = new DispatcherTimer();
-        private int _currentDay;
         private bool _pause;
 
         public DateTime Time { get; private set; }
@@ -30,7 +29,8 @@ namespace airport_simulator_2019.Engine
         public FlightBoard FlightBoard { get; private set; }
         
         public Action Tick;
-        public Action FlightComplete;
+        public Action NoMoney;
+        public Action GameOver;
 
         private Game()
         {
@@ -93,12 +93,28 @@ namespace airport_simulator_2019.Engine
                     {
                         _gameObjects[j].OnDayBegin();
                     }
+                    OnDayBegin();
                 }
 
                 Time = Time.AddSeconds(1);
             }
 
             Tick?.Invoke();
+        }
+
+        private void OnDayBegin()
+        {
+            if (Player.Balance < 0)
+            {
+                if (Player.Airplanes.Count == 0)
+                {
+                    GameOver?.Invoke();
+                }
+                else
+                {
+                    NoMoney?.Invoke();
+                }
+            }
         }
     }
 }
