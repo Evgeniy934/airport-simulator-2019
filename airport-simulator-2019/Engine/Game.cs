@@ -20,6 +20,7 @@ namespace airport_simulator_2019.Engine
         private static readonly Game _instance = new Game();
         private readonly List<GameObject> _gameObjects = new List<GameObject>();
         private readonly DispatcherTimer _timer = new DispatcherTimer();
+        private int _currentDay;
         private bool _pause;
 
         public DateTime Time { get; private set; }
@@ -71,26 +72,28 @@ namespace airport_simulator_2019.Engine
             }
 
             int seconds = (int)Math.Pow(60.0, GameSpeed);
+            var newTime = Time.AddSeconds(seconds);
 
-            for (int i = 0; i < seconds; i++)
+            int minutes = (int) (newTime - Time).TotalMinutes;            
+            for (int j = 0; j < minutes; j++)
             {
-                if (Time.Second == 0)
+                Time = Time.AddMinutes(1);
+                for (int i = _gameObjects.Count - 1; i >= 0; i--)
                 {
-                    for (int j = _gameObjects.Count - 1; j >= 0; j--)
-                    {
-                        _gameObjects[j].OnMinute();
-                    }
+                    _gameObjects[i].OnMinute();
+                }
+            }
+
+            Time = newTime;
+            
+            if (_currentDay != Time.Day)
+            {
+                for (int i = _gameObjects.Count - 1; i >= 0; i--)
+                {
+                    _gameObjects[i].OnDayBegin();
                 }
 
-                if (Time.Hour == 0 && Time.Minute == 0 && Time.Second == 0)
-                {
-                    for (int j = _gameObjects.Count - 1; j >= 0; j--)
-                    {
-                        _gameObjects[j].OnDayBegin();
-                    }
-                }
-
-                Time = Time.AddSeconds(1);
+                _currentDay = Time.Day;
             }
 
             Tick?.Invoke();
