@@ -140,8 +140,6 @@ namespace airport_simulator_2019.GameObjects
             Pay(flight.PriceFlight);
             Flights.Remove(flight);
             Schedule.CompleteFlight(flight);
-
-            Game.NoMoney?.Invoke();
         }
 
         public override void OnDayBegin()
