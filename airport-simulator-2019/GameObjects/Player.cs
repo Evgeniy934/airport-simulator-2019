@@ -1,12 +1,6 @@
 ﻿using airport_simulator_2019.Engine;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace airport_simulator_2019.GameObjects
 {
@@ -135,20 +129,6 @@ namespace airport_simulator_2019.GameObjects
                 ArrivalCity = destination
             };
             ScheduleFlight(flight, airplane, time);
-        }
-
-        public void CompleteFlight(Airplane airplane)
-        {
-            Flight flight = Flights.FirstOrDefault(x => x.Airplane == airplane);
-            if (flight != null)
-            {
-                flight.RaisePropertyChanged();
-                Pay(flight.PriceFlight);
-                Flights.Remove(flight);
-            }
-            Schedule.CompleteFlight(flight);
-
-            Game.FlightComplete?.Invoke();
         }
 
         public override void OnDayBegin()

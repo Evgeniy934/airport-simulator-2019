@@ -1,8 +1,5 @@
 ﻿using airport_simulator_2019.Engine;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace airport_simulator_2019.GameObjects
 {
@@ -19,8 +16,7 @@ namespace airport_simulator_2019.GameObjects
         {
             flight.Airplane = airplane;
             flight.DepartureTime = time;
-            flight.ArrivalTime = time.AddHours(flight.Distance / airplane.Speed);
-
+            flight.ArrivalTime = time + airplane.GetFlyDuration(flight.ArrivalCity);
             Flights.Add(flight);
         }
 
@@ -30,11 +26,6 @@ namespace airport_simulator_2019.GameObjects
             {
                 Flights.Remove(flight);
             }
-        }
-
-        public void CompleteFlight(Flight flight)
-        {
-            Flights.Remove(flight);
         }
 
         public override void OnMinute()
@@ -49,11 +40,23 @@ namespace airport_simulator_2019.GameObjects
                         if (flight.DepartureTime.EqualsUpToMinutes(Game.Time))
                         {
                             Game.Player.Spent(flight.FlightExpenses.Value);
-                            flight.Airplane.FlyTo(flight.ArrivalCity);
+                            flight.Begin();
                         }
                     }
                     else
                     {
+                        if (flight.DepartureTime.EqualsUpToMinutes(Game.Time))
+                        {
+                            Flights.Remove(flight);
+                        }
+                    }
+                }
+                else
+                {
+                    if (flight.ArrivalTime.EqualsUpToMinutes(Game.Time))
+                    {
+                        Game.Player.Pay(flight.PriceFlight);
+                        flight.Complete();
                         Flights.Remove(flight);
                     }
                 }

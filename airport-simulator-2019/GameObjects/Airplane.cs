@@ -47,7 +47,6 @@ namespace airport_simulator_2019.GameObjects
         public void FlyTo(City city)
         {
             FlyingTo = city;
-            ArrivalTime = Game.Time + GetFlyDuration(Location, city);
             RaisePropertyChanged();
         }
 
@@ -57,25 +56,17 @@ namespace airport_simulator_2019.GameObjects
                 (flight.IsPassengerFlight ? (QuantitySeat >= flight.RequiredLoad) : (MaxLoad >= flight.RequiredLoad));
         }
 
-        public TimeSpan GetFlyDuration(City a, City b)
+        public TimeSpan GetFlyDuration(City city)
         {
-            int distance = CityCatalog.GetDistance(a, b);
+            int distance = CityCatalog.GetDistance(Location, city);
             return TimeSpan.FromHours(distance / Speed);
         }
 
-        public override void OnMinute()
+        public void Arrive()
         {
-            if (InFly)
-            {
-                if (Game.Time >= ArrivalTime)
-                {
-                    // flight end
-                    Location = FlyingTo;
-                    FlyingTo = null;
-                    Game.Player.CompleteFlight(this);
-                    RaisePropertyChanged();
-                }
-            }
+            Location = FlyingTo;
+            FlyingTo = null;
+            RaisePropertyChanged();
         }
 
         public override void OnDayBegin()

@@ -1,8 +1,6 @@
 ﻿using airport_simulator_2019.Engine;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace airport_simulator_2019.GameObjects
 {

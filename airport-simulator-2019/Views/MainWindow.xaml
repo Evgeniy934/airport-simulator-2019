@@ -63,10 +63,10 @@
                             <DataGridTextColumn Binding="{Binding Airplane.QuantitySeat}" Header="Кол-во пассажирских мест" />
                             <DataGridTextColumn Binding="{Binding Airplane.Speed}" Header="Скорость" />
                             <DataGridTextColumn Binding="{Binding Airplane.Fuel}" Header="Расход топлива" />
-                            <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:G}}" Header="Дата и время вылета" SortDirection="Ascending" />
+                            <DataGridTextColumn Binding="{Binding DepartureTime, StringFormat={}{0:dd.MM.yy HH:mm}}" Header="Дата и время вылета" SortDirection="Ascending" />
                             <DataGridTextColumn Header="Направление" />
-                            <DataGridTextColumn Binding="{Binding TimeInFly, StringFormat=hh\\:mm}" Header="Время в пути" />
-                            <DataGridTextColumn Binding="{Binding ArrivalTime, StringFormat={}{0:dd.MM.yyyy HH:MM}}" Header="Дата и время прилета" />
+                            <DataGridTextColumn Binding="{Binding TimeInFly}" Header="Время в пути" />
+                            <DataGridTextColumn Binding="{Binding ArrivalTime, StringFormat={}{0:dd.MM.yy HH:mm}}" Header="Дата и время прилета" />
                             <DataGridTextColumn Binding="{Binding FlightExpenses}" Header="Расход" />
                         </DataGrid.Columns>
                     </DataGrid>

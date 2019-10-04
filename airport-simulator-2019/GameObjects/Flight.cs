@@ -21,8 +21,7 @@ namespace airport_simulator_2019.GameObjects
         public DateTime DepartureTime { get; set; }        
         public DateTime ArrivalTime { get; set; }
         public Airplane Airplane { get; set; }
-        public TimeSpan? TimeInFly => Airplane == null ? default(TimeSpan?) 
-            : TimeSpan.FromHours((double) Distance / Airplane.Speed);
+        public TimeSpan? TimeInFly => ArrivalTime - DepartureTime;
         public int? FlightExpenses => Airplane == null ? default(int?)
             : (int) (TimeInFly.Value.TotalHours * Airplane.Fuel * GasStation.FuelPrice );
         public bool InFly => Airplane?.InFly == true;
@@ -30,6 +29,24 @@ namespace airport_simulator_2019.GameObjects
             => Game.Player.Airplanes.FirstOrDefault(x => x.IsAvailableForFlight(this)) != null;
         public bool IsRegular => Regularity != "Разовый";
         public bool IsPassengerFlight => Type == "Пассажирский";
+
+        public void Complete()
+        {
+            if (InFly)
+            {
+                Airplane.Arrive();
+                RaisePropertyChanged();
+            }
+        }
+
+        public void Begin()
+        {
+            if (!InFly)
+            {
+                Airplane.FlyTo(ArrivalCity);
+                RaisePropertyChanged();
+            }
+        }
         
         public Flight()
         {
