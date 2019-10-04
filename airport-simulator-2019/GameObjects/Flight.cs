@@ -35,6 +35,7 @@ namespace airport_simulator_2019.GameObjects
             if (InFly)
             {
                 Airplane.Arrive();
+                Airplane = null;
                 RaisePropertyChanged();
             }
         }
