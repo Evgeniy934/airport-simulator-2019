@@ -80,6 +80,7 @@ namespace airport_simulator_2019.GameObjects
             int price = airplane.PriceRent;
             if (Balance >= price)
             {
+                dateEnd = dateEnd.EndOfDay();
                 Airplane plane = Game.Shop.Rent(airplane, dateEnd);
                 Airplanes.Add(plane);
 
@@ -150,7 +151,7 @@ namespace airport_simulator_2019.GameObjects
                 Airplane airplane = Airplanes[i];
                 if (airplane.InRent)
                 {
-                    if (Game.Time.DayOfYear > airplane.RentEnd.Value.DayOfYear)
+                    if (Game.Time > airplane.RentEnd.Value)
                     {
                         if (!airplane.InFly)
                         {
@@ -162,7 +163,7 @@ namespace airport_simulator_2019.GameObjects
             for (int i = Flights.Count - 1; i >= 0; i--)
             {
                 Flight flight = Flights[i];
-                if (Game.Time.DayOfYear > flight.FlightDate.DayOfYear)
+                if (Game.Time > flight.FlightDate)
                 {
                     Spent(flight.Forfeit);
                     Flights.Remove(flight);
@@ -170,5 +171,4 @@ namespace airport_simulator_2019.GameObjects
             }
         }
     }
-
 }

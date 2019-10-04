@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Engine\DateTimeExtensions.cs" />
     <Compile Include="Engine\TrulyObservableCollection.cs" />
     <Compile Include="GameObjects\City.cs" />
     <Compile Include="GameObjects\CityCatalog.cs" />
