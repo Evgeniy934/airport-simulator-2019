@@ -47,7 +47,6 @@ namespace airport_simulator_2019.GameObjects
             
             flights.Add(GenerateFlight());
             flights.Add(GenerateFlight());
-            flights.Add(GenerateFlightPassenger());
 
             return flights;
         }
