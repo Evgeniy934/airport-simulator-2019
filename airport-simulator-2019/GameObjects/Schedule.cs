@@ -19,7 +19,7 @@ namespace airport_simulator_2019.GameObjects
         {
             flight.Airplane = airplane;
             flight.DepartureTime = time;
-            flight.ArrivalTime = time.AddHours(flight.Distance / airplane.Speed);
+            flight.ArrivalTime = time.AddHours((double) flight.Distance / airplane.Speed);
 
             Flights.Add(flight);
         }

@@ -55,7 +55,8 @@ namespace airport_simulator_2019.GameObjects
         public Flight GenerateFlight()
         {
             (City, City) cityPair = CityCatalog.GetRandomCityPair();
-            return new Flight
+
+            Flight flight = new Flight
             {
                 Type = "Грузовой",
                 DepartureCity = cityPair.Item1,
@@ -65,28 +66,17 @@ namespace airport_simulator_2019.GameObjects
                 PriceFlight = RoundOff(_random.Next(100000, 3000000), 100000),
                 FlightDate = Game.Time.AddDays(_random.Next(1, 7)),
             };
-        }
 
-        public Flight GenerateFlightPassenger()
-        {
-            (City, City) cityPair = CityCatalog.GetRandomCityPair();
-            var flights = new Flight
+            bool isPassenger = (_random.Next() % 2) == 0;
+            if (isPassenger)
             {
-                Type = "Пассажирский",
-                DepartureCity = cityPair.Item1,
-                ArrivalCity = cityPair.Item2,
-                RequiredLoad = RoundOff(_random.Next(20, 330), 1),
-                Forfeit = RoundOff(_random.Next(1000000, 20000000), 1000000),
-                PricePassenger = RoundOff(_random.Next(2000, 10000), 250),
-                PriceFlight = 0,
-                FlightDate = Game.Time.AddDays(_random.Next(1, 7)),
+                flight.Type = "Пассажирский";
+                flight.RequiredLoad = RoundOff(_random.Next(20, 330), 1);
+                flight.PricePassenger = RoundOff(_random.Next(2000, 10000), 250);
+                flight.PriceFlight = flight.PricePassenger * flight.RequiredLoad;
+            }
 
-            }  ;
-            flights.PriceFlight = flights.PricePassenger * flights.RequiredLoad;
-
-            return flights;
-            
-
+            return flight;
         }
 
         private static int RoundOff(int i, int interval)
