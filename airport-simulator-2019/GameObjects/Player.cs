@@ -153,7 +153,7 @@ namespace airport_simulator_2019.GameObjects
                 Airplane airplane = Airplanes[i];
                 if (airplane.InRent)
                 {
-                    if (Game.Time.Day > airplane.RentEnd.Value.Day)
+                    if (Game.Time.DayOfYear > airplane.RentEnd.Value.DayOfYear)
                     {
                         if (!airplane.InFly)
                         {
@@ -165,7 +165,7 @@ namespace airport_simulator_2019.GameObjects
             for (int i = Flights.Count - 1; i >= 0; i--)
             {
                 Flight flight = Flights[i];
-                if (Game.Time.Day > flight.FlightDate.Day)
+                if (Game.Time.DayOfYear > flight.FlightDate.DayOfYear)
                 {
                     Spent(flight.Forfeit);
                     Flights.Remove(flight);
