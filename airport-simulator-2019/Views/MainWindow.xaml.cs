@@ -145,6 +145,12 @@ namespace airport_simulator_2019
 
         private void TakeFlight_Click(object sender, RoutedEventArgs e)
         {
+            if (_game.Player.Balance < 0)
+            {
+                ShowBalanceForm();
+                return;
+            }
+
             Flight flight = (Flight)FlightBoardGrid.SelectedItem;
             if (flight != null)
             {
@@ -159,6 +165,12 @@ namespace airport_simulator_2019
 
         private void AddToSchedule_Click(object sender, RoutedEventArgs e)
         {
+            if (_game.Player.Balance < 0)
+            {
+                ShowBalanceForm();
+                return;
+            }
+
             Flight flight = (Flight)MyFlighsGrid.SelectedItem;
             if (flight != null && !flight.InFly && flight.PlayerHasSuitableAirplane)
             {
@@ -240,6 +252,11 @@ namespace airport_simulator_2019
                 }
                 _game.Unpause();
             }
+        }
+
+        private void ShowBalanceForm()
+        {
+            MessageBox.Show("Пополните баланс чтобы продолжить!");
         }
 
         private void OnTick()
