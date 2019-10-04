@@ -58,7 +58,6 @@ namespace airport_simulator_2019.GameObjects
                         Game.Player.Pay(flight.PriceFlight);
                         flight.Complete();
                         Flights.Remove(flight);
-                        Game.Player.Flights.Remove(flight);
                     }
                 }
             }
